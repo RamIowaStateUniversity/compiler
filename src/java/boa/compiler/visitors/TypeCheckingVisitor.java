@@ -463,6 +463,8 @@ public class TypeCheckingVisitor extends AbstractVisitorNoReturn<SymbolTable> {
 				throw new TypeCheckException(n.getId(), "'" + type + "' has no member named '" + selector + "'");
 
 			type = ((BoaTuple) type).getMember(selector);
+			if (type instanceof BoaName)
+				type = ((BoaName) type).getType();
 		} else {
 			throw new TypeCheckException(n, "invalid operand type '" + type + "' for member selection");
 		}
@@ -1203,10 +1205,7 @@ public class TypeCheckingVisitor extends AbstractVisitorNoReturn<SymbolTable> {
 			types.add(c.type);
 		}
 
-		if(checkTupleArray(types) == true)
-			n.type = new BoaTuple(types);
-		else
-			n.type = new BoaArray(types.get(0));
+		n.type = new BoaTuple(types);
 	}
 
 	/** {@inheritDoc} */
