@@ -21,6 +21,7 @@ import boa.compiler.ast.expressions.*;
 import boa.compiler.ast.literals.*;
 import boa.compiler.ast.statements.*;
 import boa.compiler.ast.types.*;
+import boa.types.*;
 
 /**
  * An abstract visitor class that passes no arguments during the visit.
@@ -28,6 +29,7 @@ import boa.compiler.ast.types.*;
  * @author rdyer
  */
 public abstract class AbstractVisitorNoArg {
+	public static int ii=0;
 	protected void initialize() { }
 
 	public void start(final Node n) {
@@ -40,8 +42,34 @@ public abstract class AbstractVisitorNoArg {
 	}
 
 	public void visit(final Program n) {
+		/*if(ii==0) {
+			Component com = new Component();
+			com.setType(new Identifier("int"));
+			com.getType().type=new BoaInt();
+			Component com1 = new Component();
+			com1.setType(new Identifier("T"));
+			com1.getType().type=new BoaScalar();
+			VarDeclStatement vd = new VarDeclStatement (new Identifier("node_output"), new MapType(com, com1));
+			vd.type=new BoaMap(new BoaScalar(),new BoaInt());
+			n.addStatement(vd);
+			System.out.println("id "+vd.getId().getToken());
+			ii++;
+		}*/
 		int len = n.getStatementsSize();
+		//System.out.println("no arg stat size "+len);
+		/*for (int i = 0; i < n.getStatementsSize(); i++) {
+			if(n.getStatement(i) instanceof VarDeclStatement) {
+				VarDeclStatement vd = (VarDeclStatement)n.getStatement(i);
+				if(vd.hasInitializer()) {
+					if(vd.getInitializer().getLhs()!=null) {
+						System.out.println("\tlhs");
+					}
+
+				}
+			}
+		}*/
 		for (int i = 0; i < n.getStatementsSize(); i++) {
+			//System.out.println(n.getStatement(i).getClass());
 			n.getStatement(i).accept(this);
 			// if a node was added, dont visit it and
 			// dont re-visit the node we were just at
@@ -58,9 +86,12 @@ public abstract class AbstractVisitorNoArg {
 	}
 
 	public void visit(final Comparison n) {
+		//System.out.println("LHS "+n.getLhs().getClass());
 		n.getLhs().accept(this);
-		if (n.hasRhs())
+		if (n.hasRhs()) {
+			//System.out.println("LHS "+n.getRhs().getClass());
 			n.getRhs().accept(this);
+		}
 	}
 
 	public void visit(final Component n) {
@@ -83,6 +114,7 @@ public abstract class AbstractVisitorNoArg {
 	}
 
 	public void visit(final Factor n) {
+		//System.out.println("\t"+n.getOperand().getClass());
 		n.getOperand().accept(this);
 		for (final Node o : n.getOps())
 			o.accept(this);
@@ -127,6 +159,7 @@ public abstract class AbstractVisitorNoArg {
 	public void visit(final Block n) {
 		int len = n.getStatementsSize();
 		for (int i = 0; i < n.getStatementsSize(); i++) {
+			//System.out.println("\t"+n.getStatement(i).getClass());
 			n.getStatement(i).accept(this);
 			// if a node was added, dont visit it and
 			// dont re-visit the node we were just at
@@ -225,8 +258,10 @@ public abstract class AbstractVisitorNoArg {
 		n.getId().accept(this);
 		if (n.hasType())
 			n.getType().accept(this);
-		if (n.hasInitializer())
+		if (n.hasInitializer()) {
+			//System.out.println("\t"+n.getInitializer().getClass());
 			n.getInitializer().accept(this);
+		}
 	}
 
 	public void visit(final VisitStatement n) {
@@ -236,6 +271,44 @@ public abstract class AbstractVisitorNoArg {
 			id.accept(this);
 		n.getBody().accept(this);
 	}
+
+	public void visit(final TraverseStatement n) {
+		if (n.hasComponent())
+			n.getComponent().accept(this);
+		for (final Identifier id : n.getIdList())
+			id.accept(this);
+		if (n.hasCondition())
+			n.getCondition().accept(this);
+		if(n.getReturnType()!=null) {
+			n.getReturnType().accept(this);
+		}
+		for (final IfStatement ifStatement : n.getIfStatements())
+			ifStatement.accept(this);
+		if(n.hasBody())
+		n.getBody().accept(this);
+	}
+
+	public void visit(final FixPStatement n) {
+		n.getParam1().accept(this);
+		n.getParam2().accept(this);
+		for (final Identifier id : n.getIdList())
+			id.accept(this);
+		if (n.hasCondition())
+			n.getCondition().accept(this);
+		if(n.getReturnType()!=null) {
+			n.getReturnType().accept(this);
+		}
+		if(n.hasBody())
+		n.getBody().accept(this);
+	}
+	/*public void visit(final WhenStatement n) {
+		if (n.hasComponent())
+			n.getComponent().accept(this);
+		for (final Identifier id : n.getIdList())
+			id.accept(this);
+		n.getCondition().accept(this);
+		n.getBody().accept(this);
+	}*/
 
 	public void visit(final WhileStatement n) {
 		n.getCondition().accept(this);
@@ -271,6 +344,19 @@ public abstract class AbstractVisitorNoArg {
 		n.getBody().accept(this);
 	}
 
+	public void visit(final TraversalExpression n) {
+		n.getType().accept(this);
+		n.getBody().accept(this);
+	}
+
+	public void visit(final FixPExpression n) {
+		n.getType().accept(this);
+		n.getBody().accept(this);
+	}
+	/*public void visit(final WhenExpression n) {
+		n.getType().accept(this);
+		n.getBody().accept(this);
+	}*/
 	//
 	// literals
 	//
@@ -339,4 +425,14 @@ public abstract class AbstractVisitorNoArg {
 
 	public void visit(final VisitorType n) {
 	}
+
+	public void visit(final TraversalType n) {
+		if(n.getIndex()!=null)
+			n.getIndex().accept(this);
+	}
+
+	public void visit(final FixPType n) {
+	}
+	/*public void visit(final WhenType n) {
+	}*/
 }

@@ -8,90 +8,751 @@ public final class Toplevel {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  public interface RepositoryOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .boa.types.Project projects = 1;
+    /**
+     * <code>repeated .boa.types.Project projects = 1;</code>
+     */
+    java.util.List<boa.types.Toplevel.Project> 
+        getProjectsList();
+    /**
+     * <code>repeated .boa.types.Project projects = 1;</code>
+     */
+    boa.types.Toplevel.Project getProjects(int index);
+    /**
+     * <code>repeated .boa.types.Project projects = 1;</code>
+     */
+    int getProjectsCount();
+    /**
+     * <code>repeated .boa.types.Project projects = 1;</code>
+     */
+    java.util.List<? extends boa.types.Toplevel.ProjectOrBuilder> 
+        getProjectsOrBuilderList();
+    /**
+     * <code>repeated .boa.types.Project projects = 1;</code>
+     */
+    boa.types.Toplevel.ProjectOrBuilder getProjectsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code boa.types.Repository}
+   */
+  public static final class Repository extends
+      com.google.protobuf.GeneratedMessage
+      implements RepositoryOrBuilder {
+    // Use Repository.newBuilder() to construct.
+    private Repository(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private Repository(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Repository defaultInstance;
+    public static Repository getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public Repository getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Repository(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                projects_ = new java.util.ArrayList<boa.types.Toplevel.Project>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              projects_.add(input.readMessage(boa.types.Toplevel.Project.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          projects_ = java.util.Collections.unmodifiableList(projects_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return boa.types.Toplevel.internal_static_boa_types_Repository_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return boa.types.Toplevel.internal_static_boa_types_Repository_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              boa.types.Toplevel.Repository.class, boa.types.Toplevel.Repository.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<Repository> PARSER =
+        new com.google.protobuf.AbstractParser<Repository>() {
+      public Repository parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Repository(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Repository> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated .boa.types.Project projects = 1;
+    public static final int PROJECTS_FIELD_NUMBER = 1;
+    private java.util.List<boa.types.Toplevel.Project> projects_;
+    /**
+     * <code>repeated .boa.types.Project projects = 1;</code>
+     */
+    public java.util.List<boa.types.Toplevel.Project> getProjectsList() {
+      return projects_;
+    }
+    /**
+     * <code>repeated .boa.types.Project projects = 1;</code>
+     */
+    public java.util.List<? extends boa.types.Toplevel.ProjectOrBuilder> 
+        getProjectsOrBuilderList() {
+      return projects_;
+    }
+    /**
+     * <code>repeated .boa.types.Project projects = 1;</code>
+     */
+    public int getProjectsCount() {
+      return projects_.size();
+    }
+    /**
+     * <code>repeated .boa.types.Project projects = 1;</code>
+     */
+    public boa.types.Toplevel.Project getProjects(int index) {
+      return projects_.get(index);
+    }
+    /**
+     * <code>repeated .boa.types.Project projects = 1;</code>
+     */
+    public boa.types.Toplevel.ProjectOrBuilder getProjectsOrBuilder(
+        int index) {
+      return projects_.get(index);
+    }
+
+    private void initFields() {
+      projects_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      for (int i = 0; i < getProjectsCount(); i++) {
+        if (!getProjects(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < projects_.size(); i++) {
+        output.writeMessage(1, projects_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < projects_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, projects_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static boa.types.Toplevel.Repository parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static boa.types.Toplevel.Repository parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static boa.types.Toplevel.Repository parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static boa.types.Toplevel.Repository parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static boa.types.Toplevel.Repository parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static boa.types.Toplevel.Repository parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static boa.types.Toplevel.Repository parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static boa.types.Toplevel.Repository parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static boa.types.Toplevel.Repository parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static boa.types.Toplevel.Repository parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(boa.types.Toplevel.Repository prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code boa.types.Repository}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements boa.types.Toplevel.RepositoryOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return boa.types.Toplevel.internal_static_boa_types_Repository_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return boa.types.Toplevel.internal_static_boa_types_Repository_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                boa.types.Toplevel.Repository.class, boa.types.Toplevel.Repository.Builder.class);
+      }
+
+      // Construct using boa.types.Toplevel.Repository.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getProjectsFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (projectsBuilder_ == null) {
+          projects_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          projectsBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return boa.types.Toplevel.internal_static_boa_types_Repository_descriptor;
+      }
+
+      public boa.types.Toplevel.Repository getDefaultInstanceForType() {
+        return boa.types.Toplevel.Repository.getDefaultInstance();
+      }
+
+      public boa.types.Toplevel.Repository build() {
+        boa.types.Toplevel.Repository result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public boa.types.Toplevel.Repository buildPartial() {
+        boa.types.Toplevel.Repository result = new boa.types.Toplevel.Repository(this);
+        int from_bitField0_ = bitField0_;
+        if (projectsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            projects_ = java.util.Collections.unmodifiableList(projects_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.projects_ = projects_;
+        } else {
+          result.projects_ = projectsBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof boa.types.Toplevel.Repository) {
+          return mergeFrom((boa.types.Toplevel.Repository)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(boa.types.Toplevel.Repository other) {
+        if (other == boa.types.Toplevel.Repository.getDefaultInstance()) return this;
+        if (projectsBuilder_ == null) {
+          if (!other.projects_.isEmpty()) {
+            if (projects_.isEmpty()) {
+              projects_ = other.projects_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureProjectsIsMutable();
+              projects_.addAll(other.projects_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.projects_.isEmpty()) {
+            if (projectsBuilder_.isEmpty()) {
+              projectsBuilder_.dispose();
+              projectsBuilder_ = null;
+              projects_ = other.projects_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              projectsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getProjectsFieldBuilder() : null;
+            } else {
+              projectsBuilder_.addAllMessages(other.projects_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getProjectsCount(); i++) {
+          if (!getProjects(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        boa.types.Toplevel.Repository parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (boa.types.Toplevel.Repository) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .boa.types.Project projects = 1;
+      private java.util.List<boa.types.Toplevel.Project> projects_ =
+        java.util.Collections.emptyList();
+      private void ensureProjectsIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          projects_ = new java.util.ArrayList<boa.types.Toplevel.Project>(projects_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          boa.types.Toplevel.Project, boa.types.Toplevel.Project.Builder, boa.types.Toplevel.ProjectOrBuilder> projectsBuilder_;
+
+      /**
+       * <code>repeated .boa.types.Project projects = 1;</code>
+       */
+      public java.util.List<boa.types.Toplevel.Project> getProjectsList() {
+        if (projectsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(projects_);
+        } else {
+          return projectsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .boa.types.Project projects = 1;</code>
+       */
+      public int getProjectsCount() {
+        if (projectsBuilder_ == null) {
+          return projects_.size();
+        } else {
+          return projectsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .boa.types.Project projects = 1;</code>
+       */
+      public boa.types.Toplevel.Project getProjects(int index) {
+        if (projectsBuilder_ == null) {
+          return projects_.get(index);
+        } else {
+          return projectsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .boa.types.Project projects = 1;</code>
+       */
+      public Builder setProjects(
+          int index, boa.types.Toplevel.Project value) {
+        if (projectsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProjectsIsMutable();
+          projects_.set(index, value);
+          onChanged();
+        } else {
+          projectsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .boa.types.Project projects = 1;</code>
+       */
+      public Builder setProjects(
+          int index, boa.types.Toplevel.Project.Builder builderForValue) {
+        if (projectsBuilder_ == null) {
+          ensureProjectsIsMutable();
+          projects_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          projectsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .boa.types.Project projects = 1;</code>
+       */
+      public Builder addProjects(boa.types.Toplevel.Project value) {
+        if (projectsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProjectsIsMutable();
+          projects_.add(value);
+          onChanged();
+        } else {
+          projectsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .boa.types.Project projects = 1;</code>
+       */
+      public Builder addProjects(
+          int index, boa.types.Toplevel.Project value) {
+        if (projectsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProjectsIsMutable();
+          projects_.add(index, value);
+          onChanged();
+        } else {
+          projectsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .boa.types.Project projects = 1;</code>
+       */
+      public Builder addProjects(
+          boa.types.Toplevel.Project.Builder builderForValue) {
+        if (projectsBuilder_ == null) {
+          ensureProjectsIsMutable();
+          projects_.add(builderForValue.build());
+          onChanged();
+        } else {
+          projectsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .boa.types.Project projects = 1;</code>
+       */
+      public Builder addProjects(
+          int index, boa.types.Toplevel.Project.Builder builderForValue) {
+        if (projectsBuilder_ == null) {
+          ensureProjectsIsMutable();
+          projects_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          projectsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .boa.types.Project projects = 1;</code>
+       */
+      public Builder addAllProjects(
+          java.lang.Iterable<? extends boa.types.Toplevel.Project> values) {
+        if (projectsBuilder_ == null) {
+          ensureProjectsIsMutable();
+          super.addAll(values, projects_);
+          onChanged();
+        } else {
+          projectsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .boa.types.Project projects = 1;</code>
+       */
+      public Builder clearProjects() {
+        if (projectsBuilder_ == null) {
+          projects_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          projectsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .boa.types.Project projects = 1;</code>
+       */
+      public Builder removeProjects(int index) {
+        if (projectsBuilder_ == null) {
+          ensureProjectsIsMutable();
+          projects_.remove(index);
+          onChanged();
+        } else {
+          projectsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .boa.types.Project projects = 1;</code>
+       */
+      public boa.types.Toplevel.Project.Builder getProjectsBuilder(
+          int index) {
+        return getProjectsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .boa.types.Project projects = 1;</code>
+       */
+      public boa.types.Toplevel.ProjectOrBuilder getProjectsOrBuilder(
+          int index) {
+        if (projectsBuilder_ == null) {
+          return projects_.get(index);  } else {
+          return projectsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .boa.types.Project projects = 1;</code>
+       */
+      public java.util.List<? extends boa.types.Toplevel.ProjectOrBuilder> 
+           getProjectsOrBuilderList() {
+        if (projectsBuilder_ != null) {
+          return projectsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(projects_);
+        }
+      }
+      /**
+       * <code>repeated .boa.types.Project projects = 1;</code>
+       */
+      public boa.types.Toplevel.Project.Builder addProjectsBuilder() {
+        return getProjectsFieldBuilder().addBuilder(
+            boa.types.Toplevel.Project.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .boa.types.Project projects = 1;</code>
+       */
+      public boa.types.Toplevel.Project.Builder addProjectsBuilder(
+          int index) {
+        return getProjectsFieldBuilder().addBuilder(
+            index, boa.types.Toplevel.Project.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .boa.types.Project projects = 1;</code>
+       */
+      public java.util.List<boa.types.Toplevel.Project.Builder> 
+           getProjectsBuilderList() {
+        return getProjectsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          boa.types.Toplevel.Project, boa.types.Toplevel.Project.Builder, boa.types.Toplevel.ProjectOrBuilder> 
+          getProjectsFieldBuilder() {
+        if (projectsBuilder_ == null) {
+          projectsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              boa.types.Toplevel.Project, boa.types.Toplevel.Project.Builder, boa.types.Toplevel.ProjectOrBuilder>(
+                  projects_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          projects_ = null;
+        }
+        return projectsBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:boa.types.Repository)
+    }
+
+    static {
+      defaultInstance = new Repository(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:boa.types.Repository)
+  }
+
   public interface ProjectOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required string id = 1;
+    // required string name = 1;
     /**
-     * <code>required string id = 1;</code>
-     */
-    boolean hasId();
-    /**
-     * <code>required string id = 1;</code>
-     */
-    java.lang.String getId();
-    /**
-     * <code>required string id = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getIdBytes();
-
-    // required string name = 2;
-    /**
-     * <code>required string name = 2;</code>
+     * <code>required string name = 1;</code>
      */
     boolean hasName();
     /**
-     * <code>required string name = 2;</code>
+     * <code>required string name = 1;</code>
      */
     java.lang.String getName();
     /**
-     * <code>required string name = 2;</code>
+     * <code>required string name = 1;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
-    // required string project_url = 3;
+    // required string project_url = 2;
     /**
-     * <code>required string project_url = 3;</code>
+     * <code>required string project_url = 2;</code>
      */
     boolean hasProjectUrl();
     /**
-     * <code>required string project_url = 3;</code>
+     * <code>required string project_url = 2;</code>
      */
     java.lang.String getProjectUrl();
     /**
-     * <code>required string project_url = 3;</code>
+     * <code>required string project_url = 2;</code>
      */
     com.google.protobuf.ByteString
         getProjectUrlBytes();
 
-    // optional string homepage_url = 4;
+    // required string homepage_url = 3;
     /**
-     * <code>optional string homepage_url = 4;</code>
+     * <code>required string homepage_url = 3;</code>
      */
     boolean hasHomepageUrl();
     /**
-     * <code>optional string homepage_url = 4;</code>
+     * <code>required string homepage_url = 3;</code>
      */
     java.lang.String getHomepageUrl();
     /**
-     * <code>optional string homepage_url = 4;</code>
+     * <code>required string homepage_url = 3;</code>
      */
     com.google.protobuf.ByteString
         getHomepageUrlBytes();
 
-    // optional uint64 created_date = 5;
+    // required string description = 6;
     /**
-     * <code>optional uint64 created_date = 5;</code>
-     */
-    boolean hasCreatedDate();
-    /**
-     * <code>optional uint64 created_date = 5;</code>
-     */
-    long getCreatedDate();
-
-    // optional string description = 6;
-    /**
-     * <code>optional string description = 6;</code>
+     * <code>required string description = 6;</code>
      */
     boolean hasDescription();
     /**
-     * <code>optional string description = 6;</code>
+     * <code>required string description = 6;</code>
      */
     java.lang.String getDescription();
     /**
-     * <code>optional string description = 6;</code>
+     * <code>required string description = 6;</code>
      */
     com.google.protobuf.ByteString
         getDescriptionBytes();
@@ -236,165 +897,105 @@ public final class Toplevel {
     com.google.protobuf.ByteString
         getTopicsBytes(int index);
 
-    // repeated string status = 14;
+    // repeated .boa.types.Person maintainers = 15;
     /**
-     * <code>repeated string status = 14;</code>
-     */
-    java.util.List<java.lang.String>
-    getStatusList();
-    /**
-     * <code>repeated string status = 14;</code>
-     */
-    int getStatusCount();
-    /**
-     * <code>repeated string status = 14;</code>
-     */
-    java.lang.String getStatus(int index);
-    /**
-     * <code>repeated string status = 14;</code>
-     */
-    com.google.protobuf.ByteString
-        getStatusBytes(int index);
-
-    // repeated string translations = 15;
-    /**
-     * <code>repeated string translations = 15;</code>
-     */
-    java.util.List<java.lang.String>
-    getTranslationsList();
-    /**
-     * <code>repeated string translations = 15;</code>
-     */
-    int getTranslationsCount();
-    /**
-     * <code>repeated string translations = 15;</code>
-     */
-    java.lang.String getTranslations(int index);
-    /**
-     * <code>repeated string translations = 15;</code>
-     */
-    com.google.protobuf.ByteString
-        getTranslationsBytes(int index);
-
-    // optional bool donations = 16;
-    /**
-     * <code>optional bool donations = 16;</code>
-     */
-    boolean hasDonations();
-    /**
-     * <code>optional bool donations = 16;</code>
-     */
-    boolean getDonations();
-
-    // repeated .boa.types.Person maintainers = 17;
-    /**
-     * <code>repeated .boa.types.Person maintainers = 17;</code>
+     * <code>repeated .boa.types.Person maintainers = 15;</code>
      */
     java.util.List<boa.types.Shared.Person> 
         getMaintainersList();
     /**
-     * <code>repeated .boa.types.Person maintainers = 17;</code>
+     * <code>repeated .boa.types.Person maintainers = 15;</code>
      */
     boa.types.Shared.Person getMaintainers(int index);
     /**
-     * <code>repeated .boa.types.Person maintainers = 17;</code>
+     * <code>repeated .boa.types.Person maintainers = 15;</code>
      */
     int getMaintainersCount();
     /**
-     * <code>repeated .boa.types.Person maintainers = 17;</code>
+     * <code>repeated .boa.types.Person maintainers = 15;</code>
      */
     java.util.List<? extends boa.types.Shared.PersonOrBuilder> 
         getMaintainersOrBuilderList();
     /**
-     * <code>repeated .boa.types.Person maintainers = 17;</code>
+     * <code>repeated .boa.types.Person maintainers = 15;</code>
      */
     boa.types.Shared.PersonOrBuilder getMaintainersOrBuilder(
         int index);
 
-    // repeated .boa.types.Person developers = 18;
+    // repeated .boa.types.Person developers = 16;
     /**
-     * <code>repeated .boa.types.Person developers = 18;</code>
+     * <code>repeated .boa.types.Person developers = 16;</code>
      */
     java.util.List<boa.types.Shared.Person> 
         getDevelopersList();
     /**
-     * <code>repeated .boa.types.Person developers = 18;</code>
+     * <code>repeated .boa.types.Person developers = 16;</code>
      */
     boa.types.Shared.Person getDevelopers(int index);
     /**
-     * <code>repeated .boa.types.Person developers = 18;</code>
+     * <code>repeated .boa.types.Person developers = 16;</code>
      */
     int getDevelopersCount();
     /**
-     * <code>repeated .boa.types.Person developers = 18;</code>
+     * <code>repeated .boa.types.Person developers = 16;</code>
      */
     java.util.List<? extends boa.types.Shared.PersonOrBuilder> 
         getDevelopersOrBuilderList();
     /**
-     * <code>repeated .boa.types.Person developers = 18;</code>
+     * <code>repeated .boa.types.Person developers = 16;</code>
      */
     boa.types.Shared.PersonOrBuilder getDevelopersOrBuilder(
         int index);
 
-    // repeated .boa.types.CodeRepository code_repositories = 19;
+    // repeated .boa.types.CodeRepository code_repositories = 17;
     /**
-     * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+     * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
      */
     java.util.List<boa.types.Code.CodeRepository> 
         getCodeRepositoriesList();
     /**
-     * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+     * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
      */
     boa.types.Code.CodeRepository getCodeRepositories(int index);
     /**
-     * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+     * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
      */
     int getCodeRepositoriesCount();
     /**
-     * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+     * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
      */
     java.util.List<? extends boa.types.Code.CodeRepositoryOrBuilder> 
         getCodeRepositoriesOrBuilderList();
     /**
-     * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+     * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
      */
     boa.types.Code.CodeRepositoryOrBuilder getCodeRepositoriesOrBuilder(
         int index);
 
-    // repeated .boa.types.IssueRepository issue_repositories = 20;
+    // repeated .boa.types.IssueRepository issue_repositories = 18;
     /**
-     * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+     * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
      */
     java.util.List<boa.types.Issues.IssueRepository> 
         getIssueRepositoriesList();
     /**
-     * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+     * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
      */
     boa.types.Issues.IssueRepository getIssueRepositories(int index);
     /**
-     * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+     * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
      */
     int getIssueRepositoriesCount();
     /**
-     * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+     * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
      */
     java.util.List<? extends boa.types.Issues.IssueRepositoryOrBuilder> 
         getIssueRepositoriesOrBuilderList();
     /**
-     * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+     * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
      */
     boa.types.Issues.IssueRepositoryOrBuilder getIssueRepositoriesOrBuilder(
         int index);
-
-    // required .boa.types.Project.ForgeKind kind = 21;
-    /**
-     * <code>required .boa.types.Project.ForgeKind kind = 21;</code>
-     */
-    boolean hasKind();
-    /**
-     * <code>required .boa.types.Project.ForgeKind kind = 21;</code>
-     */
-    boa.types.Toplevel.Project.ForgeKind getKind();
   }
   /**
    * Protobuf type {@code boa.types.Project}
@@ -449,152 +1050,110 @@ public final class Toplevel {
             }
             case 10: {
               bitField0_ |= 0x00000001;
-              id_ = input.readBytes();
+              name_ = input.readBytes();
               break;
             }
             case 18: {
               bitField0_ |= 0x00000002;
-              name_ = input.readBytes();
+              projectUrl_ = input.readBytes();
               break;
             }
             case 26: {
               bitField0_ |= 0x00000004;
-              projectUrl_ = input.readBytes();
-              break;
-            }
-            case 34: {
-              bitField0_ |= 0x00000008;
               homepageUrl_ = input.readBytes();
               break;
             }
-            case 40: {
-              bitField0_ |= 0x00000010;
-              createdDate_ = input.readUInt64();
-              break;
-            }
             case 50: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000008;
               description_ = input.readBytes();
               break;
             }
             case 58: {
-              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
                 operatingSystems_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000040;
+                mutable_bitField0_ |= 0x00000010;
               }
               operatingSystems_.add(input.readBytes());
               break;
             }
             case 66: {
-              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
                 programmingLanguages_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000080;
+                mutable_bitField0_ |= 0x00000020;
               }
               programmingLanguages_.add(input.readBytes());
               break;
             }
             case 74: {
-              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
                 databases_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000100;
+                mutable_bitField0_ |= 0x00000040;
               }
               databases_.add(input.readBytes());
               break;
             }
             case 82: {
-              if (!((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
+              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
                 licenses_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000200;
+                mutable_bitField0_ |= 0x00000080;
               }
               licenses_.add(input.readBytes());
               break;
             }
             case 90: {
-              if (!((mutable_bitField0_ & 0x00000400) == 0x00000400)) {
+              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
                 interfaces_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000400;
+                mutable_bitField0_ |= 0x00000100;
               }
               interfaces_.add(input.readBytes());
               break;
             }
             case 98: {
-              if (!((mutable_bitField0_ & 0x00000800) == 0x00000800)) {
+              if (!((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
                 audiences_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000800;
+                mutable_bitField0_ |= 0x00000200;
               }
               audiences_.add(input.readBytes());
               break;
             }
             case 106: {
-              if (!((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
+              if (!((mutable_bitField0_ & 0x00000400) == 0x00000400)) {
                 topics_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00001000;
+                mutable_bitField0_ |= 0x00000400;
               }
               topics_.add(input.readBytes());
               break;
             }
-            case 114: {
-              if (!((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
-                status_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00002000;
-              }
-              status_.add(input.readBytes());
-              break;
-            }
             case 122: {
-              if (!((mutable_bitField0_ & 0x00004000) == 0x00004000)) {
-                translations_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00004000;
-              }
-              translations_.add(input.readBytes());
-              break;
-            }
-            case 128: {
-              bitField0_ |= 0x00000040;
-              donations_ = input.readBool();
-              break;
-            }
-            case 138: {
-              if (!((mutable_bitField0_ & 0x00010000) == 0x00010000)) {
+              if (!((mutable_bitField0_ & 0x00000800) == 0x00000800)) {
                 maintainers_ = new java.util.ArrayList<boa.types.Shared.Person>();
-                mutable_bitField0_ |= 0x00010000;
+                mutable_bitField0_ |= 0x00000800;
               }
               maintainers_.add(input.readMessage(boa.types.Shared.Person.PARSER, extensionRegistry));
               break;
             }
-            case 146: {
-              if (!((mutable_bitField0_ & 0x00020000) == 0x00020000)) {
+            case 130: {
+              if (!((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
                 developers_ = new java.util.ArrayList<boa.types.Shared.Person>();
-                mutable_bitField0_ |= 0x00020000;
+                mutable_bitField0_ |= 0x00001000;
               }
               developers_.add(input.readMessage(boa.types.Shared.Person.PARSER, extensionRegistry));
               break;
             }
-            case 154: {
-              if (!((mutable_bitField0_ & 0x00040000) == 0x00040000)) {
+            case 138: {
+              if (!((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
                 codeRepositories_ = new java.util.ArrayList<boa.types.Code.CodeRepository>();
-                mutable_bitField0_ |= 0x00040000;
+                mutable_bitField0_ |= 0x00002000;
               }
               codeRepositories_.add(input.readMessage(boa.types.Code.CodeRepository.PARSER, extensionRegistry));
               break;
             }
-            case 162: {
-              if (!((mutable_bitField0_ & 0x00080000) == 0x00080000)) {
+            case 146: {
+              if (!((mutable_bitField0_ & 0x00004000) == 0x00004000)) {
                 issueRepositories_ = new java.util.ArrayList<boa.types.Issues.IssueRepository>();
-                mutable_bitField0_ |= 0x00080000;
+                mutable_bitField0_ |= 0x00004000;
               }
               issueRepositories_.add(input.readMessage(boa.types.Issues.IssueRepository.PARSER, extensionRegistry));
-              break;
-            }
-            case 168: {
-              int rawValue = input.readEnum();
-              boa.types.Toplevel.Project.ForgeKind value = boa.types.Toplevel.Project.ForgeKind.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(21, rawValue);
-              } else {
-                bitField0_ |= 0x00000080;
-                kind_ = value;
-              }
               break;
             }
           }
@@ -605,43 +1164,37 @@ public final class Toplevel {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
           operatingSystems_ = new com.google.protobuf.UnmodifiableLazyStringList(operatingSystems_);
         }
-        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
           programmingLanguages_ = new com.google.protobuf.UnmodifiableLazyStringList(programmingLanguages_);
         }
-        if (((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
           databases_ = new com.google.protobuf.UnmodifiableLazyStringList(databases_);
         }
-        if (((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
+        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
           licenses_ = new com.google.protobuf.UnmodifiableLazyStringList(licenses_);
         }
-        if (((mutable_bitField0_ & 0x00000400) == 0x00000400)) {
+        if (((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
           interfaces_ = new com.google.protobuf.UnmodifiableLazyStringList(interfaces_);
         }
-        if (((mutable_bitField0_ & 0x00000800) == 0x00000800)) {
+        if (((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
           audiences_ = new com.google.protobuf.UnmodifiableLazyStringList(audiences_);
         }
-        if (((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
+        if (((mutable_bitField0_ & 0x00000400) == 0x00000400)) {
           topics_ = new com.google.protobuf.UnmodifiableLazyStringList(topics_);
         }
-        if (((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
-          status_ = new com.google.protobuf.UnmodifiableLazyStringList(status_);
-        }
-        if (((mutable_bitField0_ & 0x00004000) == 0x00004000)) {
-          translations_ = new com.google.protobuf.UnmodifiableLazyStringList(translations_);
-        }
-        if (((mutable_bitField0_ & 0x00010000) == 0x00010000)) {
+        if (((mutable_bitField0_ & 0x00000800) == 0x00000800)) {
           maintainers_ = java.util.Collections.unmodifiableList(maintainers_);
         }
-        if (((mutable_bitField0_ & 0x00020000) == 0x00020000)) {
+        if (((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
           developers_ = java.util.Collections.unmodifiableList(developers_);
         }
-        if (((mutable_bitField0_ & 0x00040000) == 0x00040000)) {
+        if (((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
           codeRepositories_ = java.util.Collections.unmodifiableList(codeRepositories_);
         }
-        if (((mutable_bitField0_ & 0x00080000) == 0x00080000)) {
+        if (((mutable_bitField0_ & 0x00004000) == 0x00004000)) {
           issueRepositories_ = java.util.Collections.unmodifiableList(issueRepositories_);
         }
         this.unknownFields = unknownFields.build();
@@ -675,180 +1228,18 @@ public final class Toplevel {
       return PARSER;
     }
 
-    /**
-     * Protobuf enum {@code boa.types.Project.ForgeKind}
-     */
-    public enum ForgeKind
-        implements com.google.protobuf.ProtocolMessageEnum {
-      /**
-       * <code>OTHER = 0;</code>
-       */
-      OTHER(0, 0),
-      /**
-       * <code>SF = 1;</code>
-       */
-      SF(1, 1),
-      /**
-       * <code>GITHUB = 2;</code>
-       */
-      GITHUB(3, 2),
-      /**
-       * <code>APACHE = 3;</code>
-       */
-      APACHE(4, 3),
-      /**
-       * <code>QUALITAS = 4;</code>
-       */
-      QUALITAS(5, 4),
-      ;
-
-      /**
-       * <code>SOURCEFORGE = 1;</code>
-       */
-      public static final ForgeKind SOURCEFORGE = SF;
-      /**
-       * <code>OTHER = 0;</code>
-       */
-      public static final int OTHER_VALUE = 0;
-      /**
-       * <code>SF = 1;</code>
-       */
-      public static final int SF_VALUE = 1;
-      /**
-       * <code>SOURCEFORGE = 1;</code>
-       */
-      public static final int SOURCEFORGE_VALUE = 1;
-      /**
-       * <code>GITHUB = 2;</code>
-       */
-      public static final int GITHUB_VALUE = 2;
-      /**
-       * <code>APACHE = 3;</code>
-       */
-      public static final int APACHE_VALUE = 3;
-      /**
-       * <code>QUALITAS = 4;</code>
-       */
-      public static final int QUALITAS_VALUE = 4;
-
-
-      public final int getNumber() { return value; }
-
-      public static ForgeKind valueOf(int value) {
-        switch (value) {
-          case 0: return OTHER;
-          case 1: return SF;
-          case 2: return GITHUB;
-          case 3: return APACHE;
-          case 4: return QUALITAS;
-          default: return null;
-        }
-      }
-
-      public static com.google.protobuf.Internal.EnumLiteMap<ForgeKind>
-          internalGetValueMap() {
-        return internalValueMap;
-      }
-      private static com.google.protobuf.Internal.EnumLiteMap<ForgeKind>
-          internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<ForgeKind>() {
-              public ForgeKind findValueByNumber(int number) {
-                return ForgeKind.valueOf(number);
-              }
-            };
-
-      public final com.google.protobuf.Descriptors.EnumValueDescriptor
-          getValueDescriptor() {
-        return getDescriptor().getValues().get(index);
-      }
-      public final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptorForType() {
-        return getDescriptor();
-      }
-      public static final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptor() {
-        return boa.types.Toplevel.Project.getDescriptor().getEnumTypes().get(0);
-      }
-
-      private static final ForgeKind[] VALUES = {
-        OTHER, SF, SOURCEFORGE, GITHUB, APACHE, QUALITAS, 
-      };
-
-      public static ForgeKind valueOf(
-          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-        if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
-        }
-        return VALUES[desc.getIndex()];
-      }
-
-      private final int index;
-      private final int value;
-
-      private ForgeKind(int index, int value) {
-        this.index = index;
-        this.value = value;
-      }
-
-      // @@protoc_insertion_point(enum_scope:boa.types.Project.ForgeKind)
-    }
-
     private int bitField0_;
-    // required string id = 1;
-    public static final int ID_FIELD_NUMBER = 1;
-    private java.lang.Object id_;
+    // required string name = 1;
+    public static final int NAME_FIELD_NUMBER = 1;
+    private java.lang.Object name_;
     /**
-     * <code>required string id = 1;</code>
+     * <code>required string name = 1;</code>
      */
-    public boolean hasId() {
+    public boolean hasName() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required string id = 1;</code>
-     */
-    public java.lang.String getId() {
-      java.lang.Object ref = id_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          id_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string id = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getIdBytes() {
-      java.lang.Object ref = id_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        id_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // required string name = 2;
-    public static final int NAME_FIELD_NUMBER = 2;
-    private java.lang.Object name_;
-    /**
-     * <code>required string name = 2;</code>
-     */
-    public boolean hasName() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>required string name = 2;</code>
+     * <code>required string name = 1;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -865,7 +1256,7 @@ public final class Toplevel {
       }
     }
     /**
-     * <code>required string name = 2;</code>
+     * <code>required string name = 1;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -881,17 +1272,17 @@ public final class Toplevel {
       }
     }
 
-    // required string project_url = 3;
-    public static final int PROJECT_URL_FIELD_NUMBER = 3;
+    // required string project_url = 2;
+    public static final int PROJECT_URL_FIELD_NUMBER = 2;
     private java.lang.Object projectUrl_;
     /**
-     * <code>required string project_url = 3;</code>
+     * <code>required string project_url = 2;</code>
      */
     public boolean hasProjectUrl() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required string project_url = 3;</code>
+     * <code>required string project_url = 2;</code>
      */
     public java.lang.String getProjectUrl() {
       java.lang.Object ref = projectUrl_;
@@ -908,7 +1299,7 @@ public final class Toplevel {
       }
     }
     /**
-     * <code>required string project_url = 3;</code>
+     * <code>required string project_url = 2;</code>
      */
     public com.google.protobuf.ByteString
         getProjectUrlBytes() {
@@ -924,17 +1315,17 @@ public final class Toplevel {
       }
     }
 
-    // optional string homepage_url = 4;
-    public static final int HOMEPAGE_URL_FIELD_NUMBER = 4;
+    // required string homepage_url = 3;
+    public static final int HOMEPAGE_URL_FIELD_NUMBER = 3;
     private java.lang.Object homepageUrl_;
     /**
-     * <code>optional string homepage_url = 4;</code>
+     * <code>required string homepage_url = 3;</code>
      */
     public boolean hasHomepageUrl() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional string homepage_url = 4;</code>
+     * <code>required string homepage_url = 3;</code>
      */
     public java.lang.String getHomepageUrl() {
       java.lang.Object ref = homepageUrl_;
@@ -951,7 +1342,7 @@ public final class Toplevel {
       }
     }
     /**
-     * <code>optional string homepage_url = 4;</code>
+     * <code>required string homepage_url = 3;</code>
      */
     public com.google.protobuf.ByteString
         getHomepageUrlBytes() {
@@ -967,33 +1358,17 @@ public final class Toplevel {
       }
     }
 
-    // optional uint64 created_date = 5;
-    public static final int CREATED_DATE_FIELD_NUMBER = 5;
-    private long createdDate_;
-    /**
-     * <code>optional uint64 created_date = 5;</code>
-     */
-    public boolean hasCreatedDate() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional uint64 created_date = 5;</code>
-     */
-    public long getCreatedDate() {
-      return createdDate_;
-    }
-
-    // optional string description = 6;
+    // required string description = 6;
     public static final int DESCRIPTION_FIELD_NUMBER = 6;
     private java.lang.Object description_;
     /**
-     * <code>optional string description = 6;</code>
+     * <code>required string description = 6;</code>
      */
     public boolean hasDescription() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional string description = 6;</code>
+     * <code>required string description = 6;</code>
      */
     public java.lang.String getDescription() {
       java.lang.Object ref = description_;
@@ -1010,7 +1385,7 @@ public final class Toplevel {
       }
     }
     /**
-     * <code>optional string description = 6;</code>
+     * <code>required string description = 6;</code>
      */
     public com.google.protobuf.ByteString
         getDescriptionBytes() {
@@ -1236,248 +1611,154 @@ public final class Toplevel {
       return topics_.getByteString(index);
     }
 
-    // repeated string status = 14;
-    public static final int STATUS_FIELD_NUMBER = 14;
-    private com.google.protobuf.LazyStringList status_;
-    /**
-     * <code>repeated string status = 14;</code>
-     */
-    public java.util.List<java.lang.String>
-        getStatusList() {
-      return status_;
-    }
-    /**
-     * <code>repeated string status = 14;</code>
-     */
-    public int getStatusCount() {
-      return status_.size();
-    }
-    /**
-     * <code>repeated string status = 14;</code>
-     */
-    public java.lang.String getStatus(int index) {
-      return status_.get(index);
-    }
-    /**
-     * <code>repeated string status = 14;</code>
-     */
-    public com.google.protobuf.ByteString
-        getStatusBytes(int index) {
-      return status_.getByteString(index);
-    }
-
-    // repeated string translations = 15;
-    public static final int TRANSLATIONS_FIELD_NUMBER = 15;
-    private com.google.protobuf.LazyStringList translations_;
-    /**
-     * <code>repeated string translations = 15;</code>
-     */
-    public java.util.List<java.lang.String>
-        getTranslationsList() {
-      return translations_;
-    }
-    /**
-     * <code>repeated string translations = 15;</code>
-     */
-    public int getTranslationsCount() {
-      return translations_.size();
-    }
-    /**
-     * <code>repeated string translations = 15;</code>
-     */
-    public java.lang.String getTranslations(int index) {
-      return translations_.get(index);
-    }
-    /**
-     * <code>repeated string translations = 15;</code>
-     */
-    public com.google.protobuf.ByteString
-        getTranslationsBytes(int index) {
-      return translations_.getByteString(index);
-    }
-
-    // optional bool donations = 16;
-    public static final int DONATIONS_FIELD_NUMBER = 16;
-    private boolean donations_;
-    /**
-     * <code>optional bool donations = 16;</code>
-     */
-    public boolean hasDonations() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    /**
-     * <code>optional bool donations = 16;</code>
-     */
-    public boolean getDonations() {
-      return donations_;
-    }
-
-    // repeated .boa.types.Person maintainers = 17;
-    public static final int MAINTAINERS_FIELD_NUMBER = 17;
+    // repeated .boa.types.Person maintainers = 15;
+    public static final int MAINTAINERS_FIELD_NUMBER = 15;
     private java.util.List<boa.types.Shared.Person> maintainers_;
     /**
-     * <code>repeated .boa.types.Person maintainers = 17;</code>
+     * <code>repeated .boa.types.Person maintainers = 15;</code>
      */
     public java.util.List<boa.types.Shared.Person> getMaintainersList() {
       return maintainers_;
     }
     /**
-     * <code>repeated .boa.types.Person maintainers = 17;</code>
+     * <code>repeated .boa.types.Person maintainers = 15;</code>
      */
     public java.util.List<? extends boa.types.Shared.PersonOrBuilder> 
         getMaintainersOrBuilderList() {
       return maintainers_;
     }
     /**
-     * <code>repeated .boa.types.Person maintainers = 17;</code>
+     * <code>repeated .boa.types.Person maintainers = 15;</code>
      */
     public int getMaintainersCount() {
       return maintainers_.size();
     }
     /**
-     * <code>repeated .boa.types.Person maintainers = 17;</code>
+     * <code>repeated .boa.types.Person maintainers = 15;</code>
      */
     public boa.types.Shared.Person getMaintainers(int index) {
       return maintainers_.get(index);
     }
     /**
-     * <code>repeated .boa.types.Person maintainers = 17;</code>
+     * <code>repeated .boa.types.Person maintainers = 15;</code>
      */
     public boa.types.Shared.PersonOrBuilder getMaintainersOrBuilder(
         int index) {
       return maintainers_.get(index);
     }
 
-    // repeated .boa.types.Person developers = 18;
-    public static final int DEVELOPERS_FIELD_NUMBER = 18;
+    // repeated .boa.types.Person developers = 16;
+    public static final int DEVELOPERS_FIELD_NUMBER = 16;
     private java.util.List<boa.types.Shared.Person> developers_;
     /**
-     * <code>repeated .boa.types.Person developers = 18;</code>
+     * <code>repeated .boa.types.Person developers = 16;</code>
      */
     public java.util.List<boa.types.Shared.Person> getDevelopersList() {
       return developers_;
     }
     /**
-     * <code>repeated .boa.types.Person developers = 18;</code>
+     * <code>repeated .boa.types.Person developers = 16;</code>
      */
     public java.util.List<? extends boa.types.Shared.PersonOrBuilder> 
         getDevelopersOrBuilderList() {
       return developers_;
     }
     /**
-     * <code>repeated .boa.types.Person developers = 18;</code>
+     * <code>repeated .boa.types.Person developers = 16;</code>
      */
     public int getDevelopersCount() {
       return developers_.size();
     }
     /**
-     * <code>repeated .boa.types.Person developers = 18;</code>
+     * <code>repeated .boa.types.Person developers = 16;</code>
      */
     public boa.types.Shared.Person getDevelopers(int index) {
       return developers_.get(index);
     }
     /**
-     * <code>repeated .boa.types.Person developers = 18;</code>
+     * <code>repeated .boa.types.Person developers = 16;</code>
      */
     public boa.types.Shared.PersonOrBuilder getDevelopersOrBuilder(
         int index) {
       return developers_.get(index);
     }
 
-    // repeated .boa.types.CodeRepository code_repositories = 19;
-    public static final int CODE_REPOSITORIES_FIELD_NUMBER = 19;
+    // repeated .boa.types.CodeRepository code_repositories = 17;
+    public static final int CODE_REPOSITORIES_FIELD_NUMBER = 17;
     private java.util.List<boa.types.Code.CodeRepository> codeRepositories_;
     /**
-     * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+     * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
      */
     public java.util.List<boa.types.Code.CodeRepository> getCodeRepositoriesList() {
       return codeRepositories_;
     }
     /**
-     * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+     * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
      */
     public java.util.List<? extends boa.types.Code.CodeRepositoryOrBuilder> 
         getCodeRepositoriesOrBuilderList() {
       return codeRepositories_;
     }
     /**
-     * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+     * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
      */
     public int getCodeRepositoriesCount() {
       return codeRepositories_.size();
     }
     /**
-     * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+     * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
      */
     public boa.types.Code.CodeRepository getCodeRepositories(int index) {
       return codeRepositories_.get(index);
     }
     /**
-     * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+     * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
      */
     public boa.types.Code.CodeRepositoryOrBuilder getCodeRepositoriesOrBuilder(
         int index) {
       return codeRepositories_.get(index);
     }
 
-    // repeated .boa.types.IssueRepository issue_repositories = 20;
-    public static final int ISSUE_REPOSITORIES_FIELD_NUMBER = 20;
+    // repeated .boa.types.IssueRepository issue_repositories = 18;
+    public static final int ISSUE_REPOSITORIES_FIELD_NUMBER = 18;
     private java.util.List<boa.types.Issues.IssueRepository> issueRepositories_;
     /**
-     * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+     * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
      */
     public java.util.List<boa.types.Issues.IssueRepository> getIssueRepositoriesList() {
       return issueRepositories_;
     }
     /**
-     * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+     * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
      */
     public java.util.List<? extends boa.types.Issues.IssueRepositoryOrBuilder> 
         getIssueRepositoriesOrBuilderList() {
       return issueRepositories_;
     }
     /**
-     * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+     * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
      */
     public int getIssueRepositoriesCount() {
       return issueRepositories_.size();
     }
     /**
-     * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+     * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
      */
     public boa.types.Issues.IssueRepository getIssueRepositories(int index) {
       return issueRepositories_.get(index);
     }
     /**
-     * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+     * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
      */
     public boa.types.Issues.IssueRepositoryOrBuilder getIssueRepositoriesOrBuilder(
         int index) {
       return issueRepositories_.get(index);
     }
 
-    // required .boa.types.Project.ForgeKind kind = 21;
-    public static final int KIND_FIELD_NUMBER = 21;
-    private boa.types.Toplevel.Project.ForgeKind kind_;
-    /**
-     * <code>required .boa.types.Project.ForgeKind kind = 21;</code>
-     */
-    public boolean hasKind() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>required .boa.types.Project.ForgeKind kind = 21;</code>
-     */
-    public boa.types.Toplevel.Project.ForgeKind getKind() {
-      return kind_;
-    }
-
     private void initFields() {
-      id_ = "";
       name_ = "";
       projectUrl_ = "";
       homepageUrl_ = "";
-      createdDate_ = 0L;
       description_ = "";
       operatingSystems_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       programmingLanguages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
@@ -1486,24 +1767,16 @@ public final class Toplevel {
       interfaces_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       audiences_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       topics_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      status_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      translations_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      donations_ = false;
       maintainers_ = java.util.Collections.emptyList();
       developers_ = java.util.Collections.emptyList();
       codeRepositories_ = java.util.Collections.emptyList();
       issueRepositories_ = java.util.Collections.emptyList();
-      kind_ = boa.types.Toplevel.Project.ForgeKind.OTHER;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       if (!hasName()) {
         memoizedIsInitialized = 0;
         return false;
@@ -1512,7 +1785,11 @@ public final class Toplevel {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasKind()) {
+      if (!hasHomepageUrl()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasDescription()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1548,21 +1825,15 @@ public final class Toplevel {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getIdBytes());
+        output.writeBytes(1, getNameBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getNameBytes());
+        output.writeBytes(2, getProjectUrlBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getProjectUrlBytes());
+        output.writeBytes(3, getHomepageUrlBytes());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeBytes(4, getHomepageUrlBytes());
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeUInt64(5, createdDate_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeBytes(6, getDescriptionBytes());
       }
       for (int i = 0; i < operatingSystems_.size(); i++) {
@@ -1586,29 +1857,17 @@ public final class Toplevel {
       for (int i = 0; i < topics_.size(); i++) {
         output.writeBytes(13, topics_.getByteString(i));
       }
-      for (int i = 0; i < status_.size(); i++) {
-        output.writeBytes(14, status_.getByteString(i));
-      }
-      for (int i = 0; i < translations_.size(); i++) {
-        output.writeBytes(15, translations_.getByteString(i));
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeBool(16, donations_);
-      }
       for (int i = 0; i < maintainers_.size(); i++) {
-        output.writeMessage(17, maintainers_.get(i));
+        output.writeMessage(15, maintainers_.get(i));
       }
       for (int i = 0; i < developers_.size(); i++) {
-        output.writeMessage(18, developers_.get(i));
+        output.writeMessage(16, developers_.get(i));
       }
       for (int i = 0; i < codeRepositories_.size(); i++) {
-        output.writeMessage(19, codeRepositories_.get(i));
+        output.writeMessage(17, codeRepositories_.get(i));
       }
       for (int i = 0; i < issueRepositories_.size(); i++) {
-        output.writeMessage(20, issueRepositories_.get(i));
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeEnum(21, kind_.getNumber());
+        output.writeMessage(18, issueRepositories_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -1621,25 +1880,17 @@ public final class Toplevel {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getIdBytes());
+          .computeBytesSize(1, getNameBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getNameBytes());
+          .computeBytesSize(2, getProjectUrlBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getProjectUrlBytes());
+          .computeBytesSize(3, getHomepageUrlBytes());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, getHomepageUrlBytes());
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(5, createdDate_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(6, getDescriptionBytes());
       }
@@ -1706,47 +1957,21 @@ public final class Toplevel {
         size += dataSize;
         size += 1 * getTopicsList().size();
       }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < status_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeBytesSizeNoTag(status_.getByteString(i));
-        }
-        size += dataSize;
-        size += 1 * getStatusList().size();
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < translations_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeBytesSizeNoTag(translations_.getByteString(i));
-        }
-        size += dataSize;
-        size += 1 * getTranslationsList().size();
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(16, donations_);
-      }
       for (int i = 0; i < maintainers_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(17, maintainers_.get(i));
+          .computeMessageSize(15, maintainers_.get(i));
       }
       for (int i = 0; i < developers_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(18, developers_.get(i));
+          .computeMessageSize(16, developers_.get(i));
       }
       for (int i = 0; i < codeRepositories_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(19, codeRepositories_.get(i));
+          .computeMessageSize(17, codeRepositories_.get(i));
       }
       for (int i = 0; i < issueRepositories_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(20, issueRepositories_.get(i));
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(21, kind_.getNumber());
+          .computeMessageSize(18, issueRepositories_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1868,64 +2093,52 @@ public final class Toplevel {
 
       public Builder clear() {
         super.clear();
-        id_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         name_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
         projectUrl_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         homepageUrl_ = "";
-        bitField0_ = (bitField0_ & ~0x00000008);
-        createdDate_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000004);
         description_ = "";
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000008);
         operatingSystems_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000010);
         programmingLanguages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000020);
         databases_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000040);
         licenses_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000080);
         interfaces_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000100);
         audiences_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00000200);
         topics_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00001000);
-        status_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00002000);
-        translations_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00004000);
-        donations_ = false;
-        bitField0_ = (bitField0_ & ~0x00008000);
+        bitField0_ = (bitField0_ & ~0x00000400);
         if (maintainersBuilder_ == null) {
           maintainers_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00010000);
+          bitField0_ = (bitField0_ & ~0x00000800);
         } else {
           maintainersBuilder_.clear();
         }
         if (developersBuilder_ == null) {
           developers_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00020000);
+          bitField0_ = (bitField0_ & ~0x00001000);
         } else {
           developersBuilder_.clear();
         }
         if (codeRepositoriesBuilder_ == null) {
           codeRepositories_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00040000);
+          bitField0_ = (bitField0_ & ~0x00002000);
         } else {
           codeRepositoriesBuilder_.clear();
         }
         if (issueRepositoriesBuilder_ == null) {
           issueRepositories_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00080000);
+          bitField0_ = (bitField0_ & ~0x00004000);
         } else {
           issueRepositoriesBuilder_.clear();
         }
-        kind_ = boa.types.Toplevel.Project.ForgeKind.OTHER;
-        bitField0_ = (bitField0_ & ~0x00100000);
         return this;
       }
 
@@ -1957,125 +2170,97 @@ public final class Toplevel {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.id_ = id_;
+        result.name_ = name_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.name_ = name_;
+        result.projectUrl_ = projectUrl_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.projectUrl_ = projectUrl_;
+        result.homepageUrl_ = homepageUrl_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.homepageUrl_ = homepageUrl_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.createdDate_ = createdDate_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
         result.description_ = description_;
-        if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
           operatingSystems_ = new com.google.protobuf.UnmodifiableLazyStringList(
               operatingSystems_);
-          bitField0_ = (bitField0_ & ~0x00000040);
+          bitField0_ = (bitField0_ & ~0x00000010);
         }
         result.operatingSystems_ = operatingSystems_;
-        if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        if (((bitField0_ & 0x00000020) == 0x00000020)) {
           programmingLanguages_ = new com.google.protobuf.UnmodifiableLazyStringList(
               programmingLanguages_);
-          bitField0_ = (bitField0_ & ~0x00000080);
+          bitField0_ = (bitField0_ & ~0x00000020);
         }
         result.programmingLanguages_ = programmingLanguages_;
-        if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        if (((bitField0_ & 0x00000040) == 0x00000040)) {
           databases_ = new com.google.protobuf.UnmodifiableLazyStringList(
               databases_);
-          bitField0_ = (bitField0_ & ~0x00000100);
+          bitField0_ = (bitField0_ & ~0x00000040);
         }
         result.databases_ = databases_;
-        if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        if (((bitField0_ & 0x00000080) == 0x00000080)) {
           licenses_ = new com.google.protobuf.UnmodifiableLazyStringList(
               licenses_);
-          bitField0_ = (bitField0_ & ~0x00000200);
+          bitField0_ = (bitField0_ & ~0x00000080);
         }
         result.licenses_ = licenses_;
-        if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        if (((bitField0_ & 0x00000100) == 0x00000100)) {
           interfaces_ = new com.google.protobuf.UnmodifiableLazyStringList(
               interfaces_);
-          bitField0_ = (bitField0_ & ~0x00000400);
+          bitField0_ = (bitField0_ & ~0x00000100);
         }
         result.interfaces_ = interfaces_;
-        if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        if (((bitField0_ & 0x00000200) == 0x00000200)) {
           audiences_ = new com.google.protobuf.UnmodifiableLazyStringList(
               audiences_);
-          bitField0_ = (bitField0_ & ~0x00000800);
+          bitField0_ = (bitField0_ & ~0x00000200);
         }
         result.audiences_ = audiences_;
-        if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        if (((bitField0_ & 0x00000400) == 0x00000400)) {
           topics_ = new com.google.protobuf.UnmodifiableLazyStringList(
               topics_);
-          bitField0_ = (bitField0_ & ~0x00001000);
+          bitField0_ = (bitField0_ & ~0x00000400);
         }
         result.topics_ = topics_;
-        if (((bitField0_ & 0x00002000) == 0x00002000)) {
-          status_ = new com.google.protobuf.UnmodifiableLazyStringList(
-              status_);
-          bitField0_ = (bitField0_ & ~0x00002000);
-        }
-        result.status_ = status_;
-        if (((bitField0_ & 0x00004000) == 0x00004000)) {
-          translations_ = new com.google.protobuf.UnmodifiableLazyStringList(
-              translations_);
-          bitField0_ = (bitField0_ & ~0x00004000);
-        }
-        result.translations_ = translations_;
-        if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
-          to_bitField0_ |= 0x00000040;
-        }
-        result.donations_ = donations_;
         if (maintainersBuilder_ == null) {
-          if (((bitField0_ & 0x00010000) == 0x00010000)) {
+          if (((bitField0_ & 0x00000800) == 0x00000800)) {
             maintainers_ = java.util.Collections.unmodifiableList(maintainers_);
-            bitField0_ = (bitField0_ & ~0x00010000);
+            bitField0_ = (bitField0_ & ~0x00000800);
           }
           result.maintainers_ = maintainers_;
         } else {
           result.maintainers_ = maintainersBuilder_.build();
         }
         if (developersBuilder_ == null) {
-          if (((bitField0_ & 0x00020000) == 0x00020000)) {
+          if (((bitField0_ & 0x00001000) == 0x00001000)) {
             developers_ = java.util.Collections.unmodifiableList(developers_);
-            bitField0_ = (bitField0_ & ~0x00020000);
+            bitField0_ = (bitField0_ & ~0x00001000);
           }
           result.developers_ = developers_;
         } else {
           result.developers_ = developersBuilder_.build();
         }
         if (codeRepositoriesBuilder_ == null) {
-          if (((bitField0_ & 0x00040000) == 0x00040000)) {
+          if (((bitField0_ & 0x00002000) == 0x00002000)) {
             codeRepositories_ = java.util.Collections.unmodifiableList(codeRepositories_);
-            bitField0_ = (bitField0_ & ~0x00040000);
+            bitField0_ = (bitField0_ & ~0x00002000);
           }
           result.codeRepositories_ = codeRepositories_;
         } else {
           result.codeRepositories_ = codeRepositoriesBuilder_.build();
         }
         if (issueRepositoriesBuilder_ == null) {
-          if (((bitField0_ & 0x00080000) == 0x00080000)) {
+          if (((bitField0_ & 0x00004000) == 0x00004000)) {
             issueRepositories_ = java.util.Collections.unmodifiableList(issueRepositories_);
-            bitField0_ = (bitField0_ & ~0x00080000);
+            bitField0_ = (bitField0_ & ~0x00004000);
           }
           result.issueRepositories_ = issueRepositories_;
         } else {
           result.issueRepositories_ = issueRepositoriesBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00100000) == 0x00100000)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.kind_ = kind_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2092,38 +2277,30 @@ public final class Toplevel {
 
       public Builder mergeFrom(boa.types.Toplevel.Project other) {
         if (other == boa.types.Toplevel.Project.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          bitField0_ |= 0x00000001;
-          id_ = other.id_;
-          onChanged();
-        }
         if (other.hasName()) {
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000001;
           name_ = other.name_;
           onChanged();
         }
         if (other.hasProjectUrl()) {
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000002;
           projectUrl_ = other.projectUrl_;
           onChanged();
         }
         if (other.hasHomepageUrl()) {
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000004;
           homepageUrl_ = other.homepageUrl_;
           onChanged();
         }
-        if (other.hasCreatedDate()) {
-          setCreatedDate(other.getCreatedDate());
-        }
         if (other.hasDescription()) {
-          bitField0_ |= 0x00000020;
+          bitField0_ |= 0x00000008;
           description_ = other.description_;
           onChanged();
         }
         if (!other.operatingSystems_.isEmpty()) {
           if (operatingSystems_.isEmpty()) {
             operatingSystems_ = other.operatingSystems_;
-            bitField0_ = (bitField0_ & ~0x00000040);
+            bitField0_ = (bitField0_ & ~0x00000010);
           } else {
             ensureOperatingSystemsIsMutable();
             operatingSystems_.addAll(other.operatingSystems_);
@@ -2133,7 +2310,7 @@ public final class Toplevel {
         if (!other.programmingLanguages_.isEmpty()) {
           if (programmingLanguages_.isEmpty()) {
             programmingLanguages_ = other.programmingLanguages_;
-            bitField0_ = (bitField0_ & ~0x00000080);
+            bitField0_ = (bitField0_ & ~0x00000020);
           } else {
             ensureProgrammingLanguagesIsMutable();
             programmingLanguages_.addAll(other.programmingLanguages_);
@@ -2143,7 +2320,7 @@ public final class Toplevel {
         if (!other.databases_.isEmpty()) {
           if (databases_.isEmpty()) {
             databases_ = other.databases_;
-            bitField0_ = (bitField0_ & ~0x00000100);
+            bitField0_ = (bitField0_ & ~0x00000040);
           } else {
             ensureDatabasesIsMutable();
             databases_.addAll(other.databases_);
@@ -2153,7 +2330,7 @@ public final class Toplevel {
         if (!other.licenses_.isEmpty()) {
           if (licenses_.isEmpty()) {
             licenses_ = other.licenses_;
-            bitField0_ = (bitField0_ & ~0x00000200);
+            bitField0_ = (bitField0_ & ~0x00000080);
           } else {
             ensureLicensesIsMutable();
             licenses_.addAll(other.licenses_);
@@ -2163,7 +2340,7 @@ public final class Toplevel {
         if (!other.interfaces_.isEmpty()) {
           if (interfaces_.isEmpty()) {
             interfaces_ = other.interfaces_;
-            bitField0_ = (bitField0_ & ~0x00000400);
+            bitField0_ = (bitField0_ & ~0x00000100);
           } else {
             ensureInterfacesIsMutable();
             interfaces_.addAll(other.interfaces_);
@@ -2173,7 +2350,7 @@ public final class Toplevel {
         if (!other.audiences_.isEmpty()) {
           if (audiences_.isEmpty()) {
             audiences_ = other.audiences_;
-            bitField0_ = (bitField0_ & ~0x00000800);
+            bitField0_ = (bitField0_ & ~0x00000200);
           } else {
             ensureAudiencesIsMutable();
             audiences_.addAll(other.audiences_);
@@ -2183,41 +2360,18 @@ public final class Toplevel {
         if (!other.topics_.isEmpty()) {
           if (topics_.isEmpty()) {
             topics_ = other.topics_;
-            bitField0_ = (bitField0_ & ~0x00001000);
+            bitField0_ = (bitField0_ & ~0x00000400);
           } else {
             ensureTopicsIsMutable();
             topics_.addAll(other.topics_);
           }
           onChanged();
         }
-        if (!other.status_.isEmpty()) {
-          if (status_.isEmpty()) {
-            status_ = other.status_;
-            bitField0_ = (bitField0_ & ~0x00002000);
-          } else {
-            ensureStatusIsMutable();
-            status_.addAll(other.status_);
-          }
-          onChanged();
-        }
-        if (!other.translations_.isEmpty()) {
-          if (translations_.isEmpty()) {
-            translations_ = other.translations_;
-            bitField0_ = (bitField0_ & ~0x00004000);
-          } else {
-            ensureTranslationsIsMutable();
-            translations_.addAll(other.translations_);
-          }
-          onChanged();
-        }
-        if (other.hasDonations()) {
-          setDonations(other.getDonations());
-        }
         if (maintainersBuilder_ == null) {
           if (!other.maintainers_.isEmpty()) {
             if (maintainers_.isEmpty()) {
               maintainers_ = other.maintainers_;
-              bitField0_ = (bitField0_ & ~0x00010000);
+              bitField0_ = (bitField0_ & ~0x00000800);
             } else {
               ensureMaintainersIsMutable();
               maintainers_.addAll(other.maintainers_);
@@ -2230,7 +2384,7 @@ public final class Toplevel {
               maintainersBuilder_.dispose();
               maintainersBuilder_ = null;
               maintainers_ = other.maintainers_;
-              bitField0_ = (bitField0_ & ~0x00010000);
+              bitField0_ = (bitField0_ & ~0x00000800);
               maintainersBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getMaintainersFieldBuilder() : null;
@@ -2243,7 +2397,7 @@ public final class Toplevel {
           if (!other.developers_.isEmpty()) {
             if (developers_.isEmpty()) {
               developers_ = other.developers_;
-              bitField0_ = (bitField0_ & ~0x00020000);
+              bitField0_ = (bitField0_ & ~0x00001000);
             } else {
               ensureDevelopersIsMutable();
               developers_.addAll(other.developers_);
@@ -2256,7 +2410,7 @@ public final class Toplevel {
               developersBuilder_.dispose();
               developersBuilder_ = null;
               developers_ = other.developers_;
-              bitField0_ = (bitField0_ & ~0x00020000);
+              bitField0_ = (bitField0_ & ~0x00001000);
               developersBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getDevelopersFieldBuilder() : null;
@@ -2269,7 +2423,7 @@ public final class Toplevel {
           if (!other.codeRepositories_.isEmpty()) {
             if (codeRepositories_.isEmpty()) {
               codeRepositories_ = other.codeRepositories_;
-              bitField0_ = (bitField0_ & ~0x00040000);
+              bitField0_ = (bitField0_ & ~0x00002000);
             } else {
               ensureCodeRepositoriesIsMutable();
               codeRepositories_.addAll(other.codeRepositories_);
@@ -2282,7 +2436,7 @@ public final class Toplevel {
               codeRepositoriesBuilder_.dispose();
               codeRepositoriesBuilder_ = null;
               codeRepositories_ = other.codeRepositories_;
-              bitField0_ = (bitField0_ & ~0x00040000);
+              bitField0_ = (bitField0_ & ~0x00002000);
               codeRepositoriesBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getCodeRepositoriesFieldBuilder() : null;
@@ -2295,7 +2449,7 @@ public final class Toplevel {
           if (!other.issueRepositories_.isEmpty()) {
             if (issueRepositories_.isEmpty()) {
               issueRepositories_ = other.issueRepositories_;
-              bitField0_ = (bitField0_ & ~0x00080000);
+              bitField0_ = (bitField0_ & ~0x00004000);
             } else {
               ensureIssueRepositoriesIsMutable();
               issueRepositories_.addAll(other.issueRepositories_);
@@ -2308,7 +2462,7 @@ public final class Toplevel {
               issueRepositoriesBuilder_.dispose();
               issueRepositoriesBuilder_ = null;
               issueRepositories_ = other.issueRepositories_;
-              bitField0_ = (bitField0_ & ~0x00080000);
+              bitField0_ = (bitField0_ & ~0x00004000);
               issueRepositoriesBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getIssueRepositoriesFieldBuilder() : null;
@@ -2317,18 +2471,11 @@ public final class Toplevel {
             }
           }
         }
-        if (other.hasKind()) {
-          setKind(other.getKind());
-        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        if (!hasId()) {
-          
-          return false;
-        }
         if (!hasName()) {
           
           return false;
@@ -2337,7 +2484,11 @@ public final class Toplevel {
           
           return false;
         }
-        if (!hasKind()) {
+        if (!hasHomepageUrl()) {
+          
+          return false;
+        }
+        if (!hasDescription()) {
           
           return false;
         }
@@ -2387,90 +2538,16 @@ public final class Toplevel {
       }
       private int bitField0_;
 
-      // required string id = 1;
-      private java.lang.Object id_ = "";
+      // required string name = 1;
+      private java.lang.Object name_ = "";
       /**
-       * <code>required string id = 1;</code>
+       * <code>required string name = 1;</code>
        */
-      public boolean hasId() {
+      public boolean hasName() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required string id = 1;</code>
-       */
-      public java.lang.String getId() {
-        java.lang.Object ref = id_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          id_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string id = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getIdBytes() {
-        java.lang.Object ref = id_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          id_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string id = 1;</code>
-       */
-      public Builder setId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        id_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string id = 1;</code>
-       */
-      public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        id_ = getDefaultInstance().getId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string id = 1;</code>
-       */
-      public Builder setIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        id_ = value;
-        onChanged();
-        return this;
-      }
-
-      // required string name = 2;
-      private java.lang.Object name_ = "";
-      /**
-       * <code>required string name = 2;</code>
-       */
-      public boolean hasName() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>required string name = 2;</code>
+       * <code>required string name = 1;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -2484,7 +2561,7 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>required string name = 2;</code>
+       * <code>required string name = 1;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -2500,51 +2577,51 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>required string name = 2;</code>
+       * <code>required string name = 1;</code>
        */
       public Builder setName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000001;
         name_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string name = 2;</code>
+       * <code>required string name = 1;</code>
        */
       public Builder clearName() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
         name_ = getDefaultInstance().getName();
         onChanged();
         return this;
       }
       /**
-       * <code>required string name = 2;</code>
+       * <code>required string name = 1;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000001;
         name_ = value;
         onChanged();
         return this;
       }
 
-      // required string project_url = 3;
+      // required string project_url = 2;
       private java.lang.Object projectUrl_ = "";
       /**
-       * <code>required string project_url = 3;</code>
+       * <code>required string project_url = 2;</code>
        */
       public boolean hasProjectUrl() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required string project_url = 3;</code>
+       * <code>required string project_url = 2;</code>
        */
       public java.lang.String getProjectUrl() {
         java.lang.Object ref = projectUrl_;
@@ -2558,7 +2635,7 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>required string project_url = 3;</code>
+       * <code>required string project_url = 2;</code>
        */
       public com.google.protobuf.ByteString
           getProjectUrlBytes() {
@@ -2574,51 +2651,51 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>required string project_url = 3;</code>
+       * <code>required string project_url = 2;</code>
        */
       public Builder setProjectUrl(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  bitField0_ |= 0x00000002;
         projectUrl_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string project_url = 3;</code>
+       * <code>required string project_url = 2;</code>
        */
       public Builder clearProjectUrl() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         projectUrl_ = getDefaultInstance().getProjectUrl();
         onChanged();
         return this;
       }
       /**
-       * <code>required string project_url = 3;</code>
+       * <code>required string project_url = 2;</code>
        */
       public Builder setProjectUrlBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  bitField0_ |= 0x00000002;
         projectUrl_ = value;
         onChanged();
         return this;
       }
 
-      // optional string homepage_url = 4;
+      // required string homepage_url = 3;
       private java.lang.Object homepageUrl_ = "";
       /**
-       * <code>optional string homepage_url = 4;</code>
+       * <code>required string homepage_url = 3;</code>
        */
       public boolean hasHomepageUrl() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional string homepage_url = 4;</code>
+       * <code>required string homepage_url = 3;</code>
        */
       public java.lang.String getHomepageUrl() {
         java.lang.Object ref = homepageUrl_;
@@ -2632,7 +2709,7 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>optional string homepage_url = 4;</code>
+       * <code>required string homepage_url = 3;</code>
        */
       public com.google.protobuf.ByteString
           getHomepageUrlBytes() {
@@ -2648,84 +2725,51 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>optional string homepage_url = 4;</code>
+       * <code>required string homepage_url = 3;</code>
        */
       public Builder setHomepageUrl(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  bitField0_ |= 0x00000004;
         homepageUrl_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string homepage_url = 4;</code>
+       * <code>required string homepage_url = 3;</code>
        */
       public Builder clearHomepageUrl() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         homepageUrl_ = getDefaultInstance().getHomepageUrl();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string homepage_url = 4;</code>
+       * <code>required string homepage_url = 3;</code>
        */
       public Builder setHomepageUrlBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  bitField0_ |= 0x00000004;
         homepageUrl_ = value;
         onChanged();
         return this;
       }
 
-      // optional uint64 created_date = 5;
-      private long createdDate_ ;
-      /**
-       * <code>optional uint64 created_date = 5;</code>
-       */
-      public boolean hasCreatedDate() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional uint64 created_date = 5;</code>
-       */
-      public long getCreatedDate() {
-        return createdDate_;
-      }
-      /**
-       * <code>optional uint64 created_date = 5;</code>
-       */
-      public Builder setCreatedDate(long value) {
-        bitField0_ |= 0x00000010;
-        createdDate_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional uint64 created_date = 5;</code>
-       */
-      public Builder clearCreatedDate() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        createdDate_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      // optional string description = 6;
+      // required string description = 6;
       private java.lang.Object description_ = "";
       /**
-       * <code>optional string description = 6;</code>
+       * <code>required string description = 6;</code>
        */
       public boolean hasDescription() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional string description = 6;</code>
+       * <code>required string description = 6;</code>
        */
       public java.lang.String getDescription() {
         java.lang.Object ref = description_;
@@ -2739,7 +2783,7 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>optional string description = 6;</code>
+       * <code>required string description = 6;</code>
        */
       public com.google.protobuf.ByteString
           getDescriptionBytes() {
@@ -2755,36 +2799,36 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>optional string description = 6;</code>
+       * <code>required string description = 6;</code>
        */
       public Builder setDescription(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000020;
+  bitField0_ |= 0x00000008;
         description_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string description = 6;</code>
+       * <code>required string description = 6;</code>
        */
       public Builder clearDescription() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000008);
         description_ = getDefaultInstance().getDescription();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string description = 6;</code>
+       * <code>required string description = 6;</code>
        */
       public Builder setDescriptionBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000020;
+  bitField0_ |= 0x00000008;
         description_ = value;
         onChanged();
         return this;
@@ -2793,9 +2837,9 @@ public final class Toplevel {
       // repeated string operating_systems = 7;
       private com.google.protobuf.LazyStringList operatingSystems_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureOperatingSystemsIsMutable() {
-        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
           operatingSystems_ = new com.google.protobuf.LazyStringArrayList(operatingSystems_);
-          bitField0_ |= 0x00000040;
+          bitField0_ |= 0x00000010;
          }
       }
       /**
@@ -2865,7 +2909,7 @@ public final class Toplevel {
        */
       public Builder clearOperatingSystems() {
         operatingSystems_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000010);
         onChanged();
         return this;
       }
@@ -2886,9 +2930,9 @@ public final class Toplevel {
       // repeated string programming_languages = 8;
       private com.google.protobuf.LazyStringList programmingLanguages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureProgrammingLanguagesIsMutable() {
-        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
           programmingLanguages_ = new com.google.protobuf.LazyStringArrayList(programmingLanguages_);
-          bitField0_ |= 0x00000080;
+          bitField0_ |= 0x00000020;
          }
       }
       /**
@@ -2958,7 +3002,7 @@ public final class Toplevel {
        */
       public Builder clearProgrammingLanguages() {
         programmingLanguages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000020);
         onChanged();
         return this;
       }
@@ -2979,9 +3023,9 @@ public final class Toplevel {
       // repeated string databases = 9;
       private com.google.protobuf.LazyStringList databases_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureDatabasesIsMutable() {
-        if (!((bitField0_ & 0x00000100) == 0x00000100)) {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
           databases_ = new com.google.protobuf.LazyStringArrayList(databases_);
-          bitField0_ |= 0x00000100;
+          bitField0_ |= 0x00000040;
          }
       }
       /**
@@ -3051,7 +3095,7 @@ public final class Toplevel {
        */
       public Builder clearDatabases() {
         databases_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000040);
         onChanged();
         return this;
       }
@@ -3072,9 +3116,9 @@ public final class Toplevel {
       // repeated string licenses = 10;
       private com.google.protobuf.LazyStringList licenses_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureLicensesIsMutable() {
-        if (!((bitField0_ & 0x00000200) == 0x00000200)) {
+        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
           licenses_ = new com.google.protobuf.LazyStringArrayList(licenses_);
-          bitField0_ |= 0x00000200;
+          bitField0_ |= 0x00000080;
          }
       }
       /**
@@ -3144,7 +3188,7 @@ public final class Toplevel {
        */
       public Builder clearLicenses() {
         licenses_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000080);
         onChanged();
         return this;
       }
@@ -3165,9 +3209,9 @@ public final class Toplevel {
       // repeated string interfaces = 11;
       private com.google.protobuf.LazyStringList interfaces_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureInterfacesIsMutable() {
-        if (!((bitField0_ & 0x00000400) == 0x00000400)) {
+        if (!((bitField0_ & 0x00000100) == 0x00000100)) {
           interfaces_ = new com.google.protobuf.LazyStringArrayList(interfaces_);
-          bitField0_ |= 0x00000400;
+          bitField0_ |= 0x00000100;
          }
       }
       /**
@@ -3237,7 +3281,7 @@ public final class Toplevel {
        */
       public Builder clearInterfaces() {
         interfaces_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000100);
         onChanged();
         return this;
       }
@@ -3258,9 +3302,9 @@ public final class Toplevel {
       // repeated string audiences = 12;
       private com.google.protobuf.LazyStringList audiences_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureAudiencesIsMutable() {
-        if (!((bitField0_ & 0x00000800) == 0x00000800)) {
+        if (!((bitField0_ & 0x00000200) == 0x00000200)) {
           audiences_ = new com.google.protobuf.LazyStringArrayList(audiences_);
-          bitField0_ |= 0x00000800;
+          bitField0_ |= 0x00000200;
          }
       }
       /**
@@ -3330,7 +3374,7 @@ public final class Toplevel {
        */
       public Builder clearAudiences() {
         audiences_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00000200);
         onChanged();
         return this;
       }
@@ -3351,9 +3395,9 @@ public final class Toplevel {
       // repeated string topics = 13;
       private com.google.protobuf.LazyStringList topics_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureTopicsIsMutable() {
-        if (!((bitField0_ & 0x00001000) == 0x00001000)) {
+        if (!((bitField0_ & 0x00000400) == 0x00000400)) {
           topics_ = new com.google.protobuf.LazyStringArrayList(topics_);
-          bitField0_ |= 0x00001000;
+          bitField0_ |= 0x00000400;
          }
       }
       /**
@@ -3423,7 +3467,7 @@ public final class Toplevel {
        */
       public Builder clearTopics() {
         topics_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00000400);
         onChanged();
         return this;
       }
@@ -3441,232 +3485,13 @@ public final class Toplevel {
         return this;
       }
 
-      // repeated string status = 14;
-      private com.google.protobuf.LazyStringList status_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      private void ensureStatusIsMutable() {
-        if (!((bitField0_ & 0x00002000) == 0x00002000)) {
-          status_ = new com.google.protobuf.LazyStringArrayList(status_);
-          bitField0_ |= 0x00002000;
-         }
-      }
-      /**
-       * <code>repeated string status = 14;</code>
-       */
-      public java.util.List<java.lang.String>
-          getStatusList() {
-        return java.util.Collections.unmodifiableList(status_);
-      }
-      /**
-       * <code>repeated string status = 14;</code>
-       */
-      public int getStatusCount() {
-        return status_.size();
-      }
-      /**
-       * <code>repeated string status = 14;</code>
-       */
-      public java.lang.String getStatus(int index) {
-        return status_.get(index);
-      }
-      /**
-       * <code>repeated string status = 14;</code>
-       */
-      public com.google.protobuf.ByteString
-          getStatusBytes(int index) {
-        return status_.getByteString(index);
-      }
-      /**
-       * <code>repeated string status = 14;</code>
-       */
-      public Builder setStatus(
-          int index, java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureStatusIsMutable();
-        status_.set(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string status = 14;</code>
-       */
-      public Builder addStatus(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureStatusIsMutable();
-        status_.add(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string status = 14;</code>
-       */
-      public Builder addAllStatus(
-          java.lang.Iterable<java.lang.String> values) {
-        ensureStatusIsMutable();
-        super.addAll(values, status_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string status = 14;</code>
-       */
-      public Builder clearStatus() {
-        status_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00002000);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string status = 14;</code>
-       */
-      public Builder addStatusBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureStatusIsMutable();
-        status_.add(value);
-        onChanged();
-        return this;
-      }
-
-      // repeated string translations = 15;
-      private com.google.protobuf.LazyStringList translations_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      private void ensureTranslationsIsMutable() {
-        if (!((bitField0_ & 0x00004000) == 0x00004000)) {
-          translations_ = new com.google.protobuf.LazyStringArrayList(translations_);
-          bitField0_ |= 0x00004000;
-         }
-      }
-      /**
-       * <code>repeated string translations = 15;</code>
-       */
-      public java.util.List<java.lang.String>
-          getTranslationsList() {
-        return java.util.Collections.unmodifiableList(translations_);
-      }
-      /**
-       * <code>repeated string translations = 15;</code>
-       */
-      public int getTranslationsCount() {
-        return translations_.size();
-      }
-      /**
-       * <code>repeated string translations = 15;</code>
-       */
-      public java.lang.String getTranslations(int index) {
-        return translations_.get(index);
-      }
-      /**
-       * <code>repeated string translations = 15;</code>
-       */
-      public com.google.protobuf.ByteString
-          getTranslationsBytes(int index) {
-        return translations_.getByteString(index);
-      }
-      /**
-       * <code>repeated string translations = 15;</code>
-       */
-      public Builder setTranslations(
-          int index, java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureTranslationsIsMutable();
-        translations_.set(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string translations = 15;</code>
-       */
-      public Builder addTranslations(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureTranslationsIsMutable();
-        translations_.add(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string translations = 15;</code>
-       */
-      public Builder addAllTranslations(
-          java.lang.Iterable<java.lang.String> values) {
-        ensureTranslationsIsMutable();
-        super.addAll(values, translations_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string translations = 15;</code>
-       */
-      public Builder clearTranslations() {
-        translations_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00004000);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string translations = 15;</code>
-       */
-      public Builder addTranslationsBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureTranslationsIsMutable();
-        translations_.add(value);
-        onChanged();
-        return this;
-      }
-
-      // optional bool donations = 16;
-      private boolean donations_ ;
-      /**
-       * <code>optional bool donations = 16;</code>
-       */
-      public boolean hasDonations() {
-        return ((bitField0_ & 0x00008000) == 0x00008000);
-      }
-      /**
-       * <code>optional bool donations = 16;</code>
-       */
-      public boolean getDonations() {
-        return donations_;
-      }
-      /**
-       * <code>optional bool donations = 16;</code>
-       */
-      public Builder setDonations(boolean value) {
-        bitField0_ |= 0x00008000;
-        donations_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional bool donations = 16;</code>
-       */
-      public Builder clearDonations() {
-        bitField0_ = (bitField0_ & ~0x00008000);
-        donations_ = false;
-        onChanged();
-        return this;
-      }
-
-      // repeated .boa.types.Person maintainers = 17;
+      // repeated .boa.types.Person maintainers = 15;
       private java.util.List<boa.types.Shared.Person> maintainers_ =
         java.util.Collections.emptyList();
       private void ensureMaintainersIsMutable() {
-        if (!((bitField0_ & 0x00010000) == 0x00010000)) {
+        if (!((bitField0_ & 0x00000800) == 0x00000800)) {
           maintainers_ = new java.util.ArrayList<boa.types.Shared.Person>(maintainers_);
-          bitField0_ |= 0x00010000;
+          bitField0_ |= 0x00000800;
          }
       }
 
@@ -3674,7 +3499,7 @@ public final class Toplevel {
           boa.types.Shared.Person, boa.types.Shared.Person.Builder, boa.types.Shared.PersonOrBuilder> maintainersBuilder_;
 
       /**
-       * <code>repeated .boa.types.Person maintainers = 17;</code>
+       * <code>repeated .boa.types.Person maintainers = 15;</code>
        */
       public java.util.List<boa.types.Shared.Person> getMaintainersList() {
         if (maintainersBuilder_ == null) {
@@ -3684,7 +3509,7 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>repeated .boa.types.Person maintainers = 17;</code>
+       * <code>repeated .boa.types.Person maintainers = 15;</code>
        */
       public int getMaintainersCount() {
         if (maintainersBuilder_ == null) {
@@ -3694,7 +3519,7 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>repeated .boa.types.Person maintainers = 17;</code>
+       * <code>repeated .boa.types.Person maintainers = 15;</code>
        */
       public boa.types.Shared.Person getMaintainers(int index) {
         if (maintainersBuilder_ == null) {
@@ -3704,7 +3529,7 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>repeated .boa.types.Person maintainers = 17;</code>
+       * <code>repeated .boa.types.Person maintainers = 15;</code>
        */
       public Builder setMaintainers(
           int index, boa.types.Shared.Person value) {
@@ -3721,7 +3546,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.Person maintainers = 17;</code>
+       * <code>repeated .boa.types.Person maintainers = 15;</code>
        */
       public Builder setMaintainers(
           int index, boa.types.Shared.Person.Builder builderForValue) {
@@ -3735,7 +3560,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.Person maintainers = 17;</code>
+       * <code>repeated .boa.types.Person maintainers = 15;</code>
        */
       public Builder addMaintainers(boa.types.Shared.Person value) {
         if (maintainersBuilder_ == null) {
@@ -3751,7 +3576,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.Person maintainers = 17;</code>
+       * <code>repeated .boa.types.Person maintainers = 15;</code>
        */
       public Builder addMaintainers(
           int index, boa.types.Shared.Person value) {
@@ -3768,7 +3593,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.Person maintainers = 17;</code>
+       * <code>repeated .boa.types.Person maintainers = 15;</code>
        */
       public Builder addMaintainers(
           boa.types.Shared.Person.Builder builderForValue) {
@@ -3782,7 +3607,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.Person maintainers = 17;</code>
+       * <code>repeated .boa.types.Person maintainers = 15;</code>
        */
       public Builder addMaintainers(
           int index, boa.types.Shared.Person.Builder builderForValue) {
@@ -3796,7 +3621,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.Person maintainers = 17;</code>
+       * <code>repeated .boa.types.Person maintainers = 15;</code>
        */
       public Builder addAllMaintainers(
           java.lang.Iterable<? extends boa.types.Shared.Person> values) {
@@ -3810,12 +3635,12 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.Person maintainers = 17;</code>
+       * <code>repeated .boa.types.Person maintainers = 15;</code>
        */
       public Builder clearMaintainers() {
         if (maintainersBuilder_ == null) {
           maintainers_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00010000);
+          bitField0_ = (bitField0_ & ~0x00000800);
           onChanged();
         } else {
           maintainersBuilder_.clear();
@@ -3823,7 +3648,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.Person maintainers = 17;</code>
+       * <code>repeated .boa.types.Person maintainers = 15;</code>
        */
       public Builder removeMaintainers(int index) {
         if (maintainersBuilder_ == null) {
@@ -3836,14 +3661,14 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.Person maintainers = 17;</code>
+       * <code>repeated .boa.types.Person maintainers = 15;</code>
        */
       public boa.types.Shared.Person.Builder getMaintainersBuilder(
           int index) {
         return getMaintainersFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .boa.types.Person maintainers = 17;</code>
+       * <code>repeated .boa.types.Person maintainers = 15;</code>
        */
       public boa.types.Shared.PersonOrBuilder getMaintainersOrBuilder(
           int index) {
@@ -3853,7 +3678,7 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>repeated .boa.types.Person maintainers = 17;</code>
+       * <code>repeated .boa.types.Person maintainers = 15;</code>
        */
       public java.util.List<? extends boa.types.Shared.PersonOrBuilder> 
            getMaintainersOrBuilderList() {
@@ -3864,14 +3689,14 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>repeated .boa.types.Person maintainers = 17;</code>
+       * <code>repeated .boa.types.Person maintainers = 15;</code>
        */
       public boa.types.Shared.Person.Builder addMaintainersBuilder() {
         return getMaintainersFieldBuilder().addBuilder(
             boa.types.Shared.Person.getDefaultInstance());
       }
       /**
-       * <code>repeated .boa.types.Person maintainers = 17;</code>
+       * <code>repeated .boa.types.Person maintainers = 15;</code>
        */
       public boa.types.Shared.Person.Builder addMaintainersBuilder(
           int index) {
@@ -3879,7 +3704,7 @@ public final class Toplevel {
             index, boa.types.Shared.Person.getDefaultInstance());
       }
       /**
-       * <code>repeated .boa.types.Person maintainers = 17;</code>
+       * <code>repeated .boa.types.Person maintainers = 15;</code>
        */
       public java.util.List<boa.types.Shared.Person.Builder> 
            getMaintainersBuilderList() {
@@ -3892,7 +3717,7 @@ public final class Toplevel {
           maintainersBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               boa.types.Shared.Person, boa.types.Shared.Person.Builder, boa.types.Shared.PersonOrBuilder>(
                   maintainers_,
-                  ((bitField0_ & 0x00010000) == 0x00010000),
+                  ((bitField0_ & 0x00000800) == 0x00000800),
                   getParentForChildren(),
                   isClean());
           maintainers_ = null;
@@ -3900,13 +3725,13 @@ public final class Toplevel {
         return maintainersBuilder_;
       }
 
-      // repeated .boa.types.Person developers = 18;
+      // repeated .boa.types.Person developers = 16;
       private java.util.List<boa.types.Shared.Person> developers_ =
         java.util.Collections.emptyList();
       private void ensureDevelopersIsMutable() {
-        if (!((bitField0_ & 0x00020000) == 0x00020000)) {
+        if (!((bitField0_ & 0x00001000) == 0x00001000)) {
           developers_ = new java.util.ArrayList<boa.types.Shared.Person>(developers_);
-          bitField0_ |= 0x00020000;
+          bitField0_ |= 0x00001000;
          }
       }
 
@@ -3914,7 +3739,7 @@ public final class Toplevel {
           boa.types.Shared.Person, boa.types.Shared.Person.Builder, boa.types.Shared.PersonOrBuilder> developersBuilder_;
 
       /**
-       * <code>repeated .boa.types.Person developers = 18;</code>
+       * <code>repeated .boa.types.Person developers = 16;</code>
        */
       public java.util.List<boa.types.Shared.Person> getDevelopersList() {
         if (developersBuilder_ == null) {
@@ -3924,7 +3749,7 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>repeated .boa.types.Person developers = 18;</code>
+       * <code>repeated .boa.types.Person developers = 16;</code>
        */
       public int getDevelopersCount() {
         if (developersBuilder_ == null) {
@@ -3934,7 +3759,7 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>repeated .boa.types.Person developers = 18;</code>
+       * <code>repeated .boa.types.Person developers = 16;</code>
        */
       public boa.types.Shared.Person getDevelopers(int index) {
         if (developersBuilder_ == null) {
@@ -3944,7 +3769,7 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>repeated .boa.types.Person developers = 18;</code>
+       * <code>repeated .boa.types.Person developers = 16;</code>
        */
       public Builder setDevelopers(
           int index, boa.types.Shared.Person value) {
@@ -3961,7 +3786,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.Person developers = 18;</code>
+       * <code>repeated .boa.types.Person developers = 16;</code>
        */
       public Builder setDevelopers(
           int index, boa.types.Shared.Person.Builder builderForValue) {
@@ -3975,7 +3800,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.Person developers = 18;</code>
+       * <code>repeated .boa.types.Person developers = 16;</code>
        */
       public Builder addDevelopers(boa.types.Shared.Person value) {
         if (developersBuilder_ == null) {
@@ -3991,7 +3816,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.Person developers = 18;</code>
+       * <code>repeated .boa.types.Person developers = 16;</code>
        */
       public Builder addDevelopers(
           int index, boa.types.Shared.Person value) {
@@ -4008,7 +3833,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.Person developers = 18;</code>
+       * <code>repeated .boa.types.Person developers = 16;</code>
        */
       public Builder addDevelopers(
           boa.types.Shared.Person.Builder builderForValue) {
@@ -4022,7 +3847,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.Person developers = 18;</code>
+       * <code>repeated .boa.types.Person developers = 16;</code>
        */
       public Builder addDevelopers(
           int index, boa.types.Shared.Person.Builder builderForValue) {
@@ -4036,7 +3861,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.Person developers = 18;</code>
+       * <code>repeated .boa.types.Person developers = 16;</code>
        */
       public Builder addAllDevelopers(
           java.lang.Iterable<? extends boa.types.Shared.Person> values) {
@@ -4050,12 +3875,12 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.Person developers = 18;</code>
+       * <code>repeated .boa.types.Person developers = 16;</code>
        */
       public Builder clearDevelopers() {
         if (developersBuilder_ == null) {
           developers_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00020000);
+          bitField0_ = (bitField0_ & ~0x00001000);
           onChanged();
         } else {
           developersBuilder_.clear();
@@ -4063,7 +3888,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.Person developers = 18;</code>
+       * <code>repeated .boa.types.Person developers = 16;</code>
        */
       public Builder removeDevelopers(int index) {
         if (developersBuilder_ == null) {
@@ -4076,14 +3901,14 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.Person developers = 18;</code>
+       * <code>repeated .boa.types.Person developers = 16;</code>
        */
       public boa.types.Shared.Person.Builder getDevelopersBuilder(
           int index) {
         return getDevelopersFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .boa.types.Person developers = 18;</code>
+       * <code>repeated .boa.types.Person developers = 16;</code>
        */
       public boa.types.Shared.PersonOrBuilder getDevelopersOrBuilder(
           int index) {
@@ -4093,7 +3918,7 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>repeated .boa.types.Person developers = 18;</code>
+       * <code>repeated .boa.types.Person developers = 16;</code>
        */
       public java.util.List<? extends boa.types.Shared.PersonOrBuilder> 
            getDevelopersOrBuilderList() {
@@ -4104,14 +3929,14 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>repeated .boa.types.Person developers = 18;</code>
+       * <code>repeated .boa.types.Person developers = 16;</code>
        */
       public boa.types.Shared.Person.Builder addDevelopersBuilder() {
         return getDevelopersFieldBuilder().addBuilder(
             boa.types.Shared.Person.getDefaultInstance());
       }
       /**
-       * <code>repeated .boa.types.Person developers = 18;</code>
+       * <code>repeated .boa.types.Person developers = 16;</code>
        */
       public boa.types.Shared.Person.Builder addDevelopersBuilder(
           int index) {
@@ -4119,7 +3944,7 @@ public final class Toplevel {
             index, boa.types.Shared.Person.getDefaultInstance());
       }
       /**
-       * <code>repeated .boa.types.Person developers = 18;</code>
+       * <code>repeated .boa.types.Person developers = 16;</code>
        */
       public java.util.List<boa.types.Shared.Person.Builder> 
            getDevelopersBuilderList() {
@@ -4132,7 +3957,7 @@ public final class Toplevel {
           developersBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               boa.types.Shared.Person, boa.types.Shared.Person.Builder, boa.types.Shared.PersonOrBuilder>(
                   developers_,
-                  ((bitField0_ & 0x00020000) == 0x00020000),
+                  ((bitField0_ & 0x00001000) == 0x00001000),
                   getParentForChildren(),
                   isClean());
           developers_ = null;
@@ -4140,13 +3965,13 @@ public final class Toplevel {
         return developersBuilder_;
       }
 
-      // repeated .boa.types.CodeRepository code_repositories = 19;
+      // repeated .boa.types.CodeRepository code_repositories = 17;
       private java.util.List<boa.types.Code.CodeRepository> codeRepositories_ =
         java.util.Collections.emptyList();
       private void ensureCodeRepositoriesIsMutable() {
-        if (!((bitField0_ & 0x00040000) == 0x00040000)) {
+        if (!((bitField0_ & 0x00002000) == 0x00002000)) {
           codeRepositories_ = new java.util.ArrayList<boa.types.Code.CodeRepository>(codeRepositories_);
-          bitField0_ |= 0x00040000;
+          bitField0_ |= 0x00002000;
          }
       }
 
@@ -4154,7 +3979,7 @@ public final class Toplevel {
           boa.types.Code.CodeRepository, boa.types.Code.CodeRepository.Builder, boa.types.Code.CodeRepositoryOrBuilder> codeRepositoriesBuilder_;
 
       /**
-       * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+       * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
        */
       public java.util.List<boa.types.Code.CodeRepository> getCodeRepositoriesList() {
         if (codeRepositoriesBuilder_ == null) {
@@ -4164,7 +3989,7 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+       * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
        */
       public int getCodeRepositoriesCount() {
         if (codeRepositoriesBuilder_ == null) {
@@ -4174,7 +3999,7 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+       * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
        */
       public boa.types.Code.CodeRepository getCodeRepositories(int index) {
         if (codeRepositoriesBuilder_ == null) {
@@ -4184,7 +4009,7 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+       * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
        */
       public Builder setCodeRepositories(
           int index, boa.types.Code.CodeRepository value) {
@@ -4201,7 +4026,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+       * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
        */
       public Builder setCodeRepositories(
           int index, boa.types.Code.CodeRepository.Builder builderForValue) {
@@ -4215,7 +4040,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+       * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
        */
       public Builder addCodeRepositories(boa.types.Code.CodeRepository value) {
         if (codeRepositoriesBuilder_ == null) {
@@ -4231,7 +4056,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+       * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
        */
       public Builder addCodeRepositories(
           int index, boa.types.Code.CodeRepository value) {
@@ -4248,7 +4073,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+       * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
        */
       public Builder addCodeRepositories(
           boa.types.Code.CodeRepository.Builder builderForValue) {
@@ -4262,7 +4087,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+       * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
        */
       public Builder addCodeRepositories(
           int index, boa.types.Code.CodeRepository.Builder builderForValue) {
@@ -4276,7 +4101,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+       * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
        */
       public Builder addAllCodeRepositories(
           java.lang.Iterable<? extends boa.types.Code.CodeRepository> values) {
@@ -4290,12 +4115,12 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+       * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
        */
       public Builder clearCodeRepositories() {
         if (codeRepositoriesBuilder_ == null) {
           codeRepositories_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00040000);
+          bitField0_ = (bitField0_ & ~0x00002000);
           onChanged();
         } else {
           codeRepositoriesBuilder_.clear();
@@ -4303,7 +4128,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+       * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
        */
       public Builder removeCodeRepositories(int index) {
         if (codeRepositoriesBuilder_ == null) {
@@ -4316,14 +4141,14 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+       * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
        */
       public boa.types.Code.CodeRepository.Builder getCodeRepositoriesBuilder(
           int index) {
         return getCodeRepositoriesFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+       * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
        */
       public boa.types.Code.CodeRepositoryOrBuilder getCodeRepositoriesOrBuilder(
           int index) {
@@ -4333,7 +4158,7 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+       * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
        */
       public java.util.List<? extends boa.types.Code.CodeRepositoryOrBuilder> 
            getCodeRepositoriesOrBuilderList() {
@@ -4344,14 +4169,14 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+       * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
        */
       public boa.types.Code.CodeRepository.Builder addCodeRepositoriesBuilder() {
         return getCodeRepositoriesFieldBuilder().addBuilder(
             boa.types.Code.CodeRepository.getDefaultInstance());
       }
       /**
-       * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+       * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
        */
       public boa.types.Code.CodeRepository.Builder addCodeRepositoriesBuilder(
           int index) {
@@ -4359,7 +4184,7 @@ public final class Toplevel {
             index, boa.types.Code.CodeRepository.getDefaultInstance());
       }
       /**
-       * <code>repeated .boa.types.CodeRepository code_repositories = 19;</code>
+       * <code>repeated .boa.types.CodeRepository code_repositories = 17;</code>
        */
       public java.util.List<boa.types.Code.CodeRepository.Builder> 
            getCodeRepositoriesBuilderList() {
@@ -4372,7 +4197,7 @@ public final class Toplevel {
           codeRepositoriesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               boa.types.Code.CodeRepository, boa.types.Code.CodeRepository.Builder, boa.types.Code.CodeRepositoryOrBuilder>(
                   codeRepositories_,
-                  ((bitField0_ & 0x00040000) == 0x00040000),
+                  ((bitField0_ & 0x00002000) == 0x00002000),
                   getParentForChildren(),
                   isClean());
           codeRepositories_ = null;
@@ -4380,13 +4205,13 @@ public final class Toplevel {
         return codeRepositoriesBuilder_;
       }
 
-      // repeated .boa.types.IssueRepository issue_repositories = 20;
+      // repeated .boa.types.IssueRepository issue_repositories = 18;
       private java.util.List<boa.types.Issues.IssueRepository> issueRepositories_ =
         java.util.Collections.emptyList();
       private void ensureIssueRepositoriesIsMutable() {
-        if (!((bitField0_ & 0x00080000) == 0x00080000)) {
+        if (!((bitField0_ & 0x00004000) == 0x00004000)) {
           issueRepositories_ = new java.util.ArrayList<boa.types.Issues.IssueRepository>(issueRepositories_);
-          bitField0_ |= 0x00080000;
+          bitField0_ |= 0x00004000;
          }
       }
 
@@ -4394,7 +4219,7 @@ public final class Toplevel {
           boa.types.Issues.IssueRepository, boa.types.Issues.IssueRepository.Builder, boa.types.Issues.IssueRepositoryOrBuilder> issueRepositoriesBuilder_;
 
       /**
-       * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+       * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
        */
       public java.util.List<boa.types.Issues.IssueRepository> getIssueRepositoriesList() {
         if (issueRepositoriesBuilder_ == null) {
@@ -4404,7 +4229,7 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+       * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
        */
       public int getIssueRepositoriesCount() {
         if (issueRepositoriesBuilder_ == null) {
@@ -4414,7 +4239,7 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+       * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
        */
       public boa.types.Issues.IssueRepository getIssueRepositories(int index) {
         if (issueRepositoriesBuilder_ == null) {
@@ -4424,7 +4249,7 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+       * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
        */
       public Builder setIssueRepositories(
           int index, boa.types.Issues.IssueRepository value) {
@@ -4441,7 +4266,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+       * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
        */
       public Builder setIssueRepositories(
           int index, boa.types.Issues.IssueRepository.Builder builderForValue) {
@@ -4455,7 +4280,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+       * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
        */
       public Builder addIssueRepositories(boa.types.Issues.IssueRepository value) {
         if (issueRepositoriesBuilder_ == null) {
@@ -4471,7 +4296,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+       * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
        */
       public Builder addIssueRepositories(
           int index, boa.types.Issues.IssueRepository value) {
@@ -4488,7 +4313,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+       * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
        */
       public Builder addIssueRepositories(
           boa.types.Issues.IssueRepository.Builder builderForValue) {
@@ -4502,7 +4327,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+       * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
        */
       public Builder addIssueRepositories(
           int index, boa.types.Issues.IssueRepository.Builder builderForValue) {
@@ -4516,7 +4341,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+       * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
        */
       public Builder addAllIssueRepositories(
           java.lang.Iterable<? extends boa.types.Issues.IssueRepository> values) {
@@ -4530,12 +4355,12 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+       * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
        */
       public Builder clearIssueRepositories() {
         if (issueRepositoriesBuilder_ == null) {
           issueRepositories_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00080000);
+          bitField0_ = (bitField0_ & ~0x00004000);
           onChanged();
         } else {
           issueRepositoriesBuilder_.clear();
@@ -4543,7 +4368,7 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+       * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
        */
       public Builder removeIssueRepositories(int index) {
         if (issueRepositoriesBuilder_ == null) {
@@ -4556,14 +4381,14 @@ public final class Toplevel {
         return this;
       }
       /**
-       * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+       * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
        */
       public boa.types.Issues.IssueRepository.Builder getIssueRepositoriesBuilder(
           int index) {
         return getIssueRepositoriesFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+       * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
        */
       public boa.types.Issues.IssueRepositoryOrBuilder getIssueRepositoriesOrBuilder(
           int index) {
@@ -4573,7 +4398,7 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+       * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
        */
       public java.util.List<? extends boa.types.Issues.IssueRepositoryOrBuilder> 
            getIssueRepositoriesOrBuilderList() {
@@ -4584,14 +4409,14 @@ public final class Toplevel {
         }
       }
       /**
-       * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+       * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
        */
       public boa.types.Issues.IssueRepository.Builder addIssueRepositoriesBuilder() {
         return getIssueRepositoriesFieldBuilder().addBuilder(
             boa.types.Issues.IssueRepository.getDefaultInstance());
       }
       /**
-       * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+       * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
        */
       public boa.types.Issues.IssueRepository.Builder addIssueRepositoriesBuilder(
           int index) {
@@ -4599,7 +4424,7 @@ public final class Toplevel {
             index, boa.types.Issues.IssueRepository.getDefaultInstance());
       }
       /**
-       * <code>repeated .boa.types.IssueRepository issue_repositories = 20;</code>
+       * <code>repeated .boa.types.IssueRepository issue_repositories = 18;</code>
        */
       public java.util.List<boa.types.Issues.IssueRepository.Builder> 
            getIssueRepositoriesBuilderList() {
@@ -4612,48 +4437,12 @@ public final class Toplevel {
           issueRepositoriesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               boa.types.Issues.IssueRepository, boa.types.Issues.IssueRepository.Builder, boa.types.Issues.IssueRepositoryOrBuilder>(
                   issueRepositories_,
-                  ((bitField0_ & 0x00080000) == 0x00080000),
+                  ((bitField0_ & 0x00004000) == 0x00004000),
                   getParentForChildren(),
                   isClean());
           issueRepositories_ = null;
         }
         return issueRepositoriesBuilder_;
-      }
-
-      // required .boa.types.Project.ForgeKind kind = 21;
-      private boa.types.Toplevel.Project.ForgeKind kind_ = boa.types.Toplevel.Project.ForgeKind.OTHER;
-      /**
-       * <code>required .boa.types.Project.ForgeKind kind = 21;</code>
-       */
-      public boolean hasKind() {
-        return ((bitField0_ & 0x00100000) == 0x00100000);
-      }
-      /**
-       * <code>required .boa.types.Project.ForgeKind kind = 21;</code>
-       */
-      public boa.types.Toplevel.Project.ForgeKind getKind() {
-        return kind_;
-      }
-      /**
-       * <code>required .boa.types.Project.ForgeKind kind = 21;</code>
-       */
-      public Builder setKind(boa.types.Toplevel.Project.ForgeKind value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        bitField0_ |= 0x00100000;
-        kind_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required .boa.types.Project.ForgeKind kind = 21;</code>
-       */
-      public Builder clearKind() {
-        bitField0_ = (bitField0_ & ~0x00100000);
-        kind_ = boa.types.Toplevel.Project.ForgeKind.OTHER;
-        onChanged();
-        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:boa.types.Project)
@@ -4667,6 +4456,11 @@ public final class Toplevel {
     // @@protoc_insertion_point(class_scope:boa.types.Project)
   }
 
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_boa_types_Repository_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_boa_types_Repository_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_boa_types_Project_descriptor;
   private static
@@ -4682,36 +4476,37 @@ public final class Toplevel {
   static {
     java.lang.String[] descriptorData = {
       "\n\016toplevel.proto\022\tboa.types\032\014shared.prot" +
-      "o\032\ncode.proto\032\014issues.proto\"\214\005\n\007Project\022" +
-      "\n\n\002id\030\001 \002(\t\022\014\n\004name\030\002 \002(\t\022\023\n\013project_url" +
-      "\030\003 \002(\t\022\024\n\014homepage_url\030\004 \001(\t\022\024\n\014created_" +
-      "date\030\005 \001(\004\022\023\n\013description\030\006 \001(\t\022\031\n\021opera" +
-      "ting_systems\030\007 \003(\t\022\035\n\025programming_langua" +
-      "ges\030\010 \003(\t\022\021\n\tdatabases\030\t \003(\t\022\020\n\010licenses" +
-      "\030\n \003(\t\022\022\n\ninterfaces\030\013 \003(\t\022\021\n\taudiences\030" +
-      "\014 \003(\t\022\016\n\006topics\030\r \003(\t\022\016\n\006status\030\016 \003(\t\022\024\n" +
-      "\014translations\030\017 \003(\t\022\021\n\tdonations\030\020 \001(\010\022&",
-      "\n\013maintainers\030\021 \003(\0132\021.boa.types.Person\022%" +
-      "\n\ndevelopers\030\022 \003(\0132\021.boa.types.Person\0224\n" +
-      "\021code_repositories\030\023 \003(\0132\031.boa.types.Cod" +
-      "eRepository\0226\n\022issue_repositories\030\024 \003(\0132" +
-      "\032.boa.types.IssueRepository\022*\n\004kind\030\025 \002(" +
-      "\0162\034.boa.types.Project.ForgeKind\"Y\n\tForge" +
-      "Kind\022\t\n\005OTHER\020\000\022\006\n\002SF\020\001\022\017\n\013SOURCEFORGE\020\001" +
-      "\022\n\n\006GITHUB\020\002\022\n\n\006APACHE\020\003\022\014\n\010QUALITAS\020\004\032\002" +
-      "\020\001B\002H\001"
+      "o\032\ncode.proto\032\014issues.proto\"2\n\nRepositor" +
+      "y\022$\n\010projects\030\001 \003(\0132\022.boa.types.Project\"" +
+      "\252\003\n\007Project\022\014\n\004name\030\001 \002(\t\022\023\n\013project_url" +
+      "\030\002 \002(\t\022\024\n\014homepage_url\030\003 \002(\t\022\023\n\013descript" +
+      "ion\030\006 \002(\t\022\031\n\021operating_systems\030\007 \003(\t\022\035\n\025" +
+      "programming_languages\030\010 \003(\t\022\021\n\tdatabases" +
+      "\030\t \003(\t\022\020\n\010licenses\030\n \003(\t\022\022\n\ninterfaces\030\013" +
+      " \003(\t\022\021\n\taudiences\030\014 \003(\t\022\016\n\006topics\030\r \003(\t\022" +
+      "&\n\013maintainers\030\017 \003(\0132\021.boa.types.Person\022",
+      "%\n\ndevelopers\030\020 \003(\0132\021.boa.types.Person\0224" +
+      "\n\021code_repositories\030\021 \003(\0132\031.boa.types.Co" +
+      "deRepository\0226\n\022issue_repositories\030\022 \003(\013" +
+      "2\032.boa.types.IssueRepositoryB\002H\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_boa_types_Project_descriptor =
+          internal_static_boa_types_Repository_descriptor =
             getDescriptor().getMessageTypes().get(0);
+          internal_static_boa_types_Repository_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_boa_types_Repository_descriptor,
+              new java.lang.String[] { "Projects", });
+          internal_static_boa_types_Project_descriptor =
+            getDescriptor().getMessageTypes().get(1);
           internal_static_boa_types_Project_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_boa_types_Project_descriptor,
-              new java.lang.String[] { "Id", "Name", "ProjectUrl", "HomepageUrl", "CreatedDate", "Description", "OperatingSystems", "ProgrammingLanguages", "Databases", "Licenses", "Interfaces", "Audiences", "Topics", "Status", "Translations", "Donations", "Maintainers", "Developers", "CodeRepositories", "IssueRepositories", "Kind", });
+              new java.lang.String[] { "Name", "ProjectUrl", "HomepageUrl", "Description", "OperatingSystems", "ProgrammingLanguages", "Databases", "Licenses", "Interfaces", "Audiences", "Topics", "Maintainers", "Developers", "CodeRepositories", "IssueRepositories", });
           return null;
         }
       };

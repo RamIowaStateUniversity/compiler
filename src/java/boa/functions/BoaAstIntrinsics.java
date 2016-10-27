@@ -35,8 +35,6 @@ import boa.types.Ast.*;
 import boa.types.Code.CodeRepository;
 import boa.types.Code.Revision;
 import boa.types.Diff.ChangedFile;
-import boa.types.Issues.IssueRepository;
-import boa.types.Issues.IssuesRoot;
 import boa.types.Shared.ChangeKind;
 import boa.types.Shared.Person;
 import boa.types.Toplevel.Project;
@@ -49,7 +47,7 @@ import boa.types.Toplevel.Project;
 public class BoaAstIntrinsics {
 	@SuppressWarnings("rawtypes")
 	private static Context context;
-	private static MapFile.Reader map, commentsMap, issuesMap;
+	private static MapFile.Reader map, commentsMap;
 
 	public static enum AST_COUNTER {
 		GETS_ATTEMPTED,
@@ -67,7 +65,6 @@ public class BoaAstIntrinsics {
 
 	private static final ASTRoot emptyAst = ASTRoot.newBuilder().build();
 	private static final CommentsRoot emptyComments = CommentsRoot.newBuilder().build();
-	private static final IssuesRoot emptyIssues = IssuesRoot.newBuilder().build();
 
 	/**
 	 * Given a ChangedFile, return the AST for that file at that revision.
@@ -86,7 +83,7 @@ public class BoaAstIntrinsics {
 				&& kind != ChangedFile.FileKind.SOURCE_JAVA_JLS4)
 			return emptyAst;
 
-		context.getCounter(AST_COUNTER.GETS_ATTEMPTED).increment(1);
+		//context.getCounter(AST_COUNTER.GETS_ATTEMPTED).increment(1);
 
 		final String rowName = f.getKey() + "!!" + f.getName();
 
@@ -96,31 +93,31 @@ public class BoaAstIntrinsics {
 		try {
 			final BytesWritable value = new BytesWritable();
 			if (map.get(new Text(rowName), value) == null) {
-				context.getCounter(AST_COUNTER.GETS_FAIL_MISSING).increment(1);
+		//		context.getCounter(AST_COUNTER.GETS_FAIL_MISSING).increment(1);
 			} else {
 				final CodedInputStream _stream = CodedInputStream.newInstance(value.getBytes(), 0, value.getLength());
 				// defaults to 64, really big ASTs require more
 				_stream.setRecursionLimit(Integer.MAX_VALUE);
 				final ASTRoot root = ASTRoot.parseFrom(_stream);
-				context.getCounter(AST_COUNTER.GETS_SUCCEED).increment(1);
+		//		context.getCounter(AST_COUNTER.GETS_SUCCEED).increment(1);
 				return root;
 			}
 		} catch (final InvalidProtocolBufferException e) {
 			e.printStackTrace();
-			context.getCounter(AST_COUNTER.GETS_FAIL_BADPROTOBUF).increment(1);
+		//	context.getCounter(AST_COUNTER.GETS_FAIL_BADPROTOBUF).increment(1);
 		} catch (final IOException e) {
 			e.printStackTrace();
-			context.getCounter(AST_COUNTER.GETS_FAIL_MISSING).increment(1);
+		//	context.getCounter(AST_COUNTER.GETS_FAIL_MISSING).increment(1);
 		} catch (final RuntimeException e) {
 			e.printStackTrace();
-			context.getCounter(AST_COUNTER.GETS_FAIL_MISSING).increment(1);
+		//	context.getCounter(AST_COUNTER.GETS_FAIL_MISSING).increment(1);
 		} catch (final Error e) {
 			e.printStackTrace();
-			context.getCounter(AST_COUNTER.GETS_FAIL_BADPROTOBUF).increment(1);
+		//	context.getCounter(AST_COUNTER.GETS_FAIL_BADPROTOBUF).increment(1);
 		}
 
-		System.err.println("error with ast: " + rowName);
-		context.getCounter(AST_COUNTER.GETS_FAILED).increment(1);
+		//System.err.println("error with ast: " + rowName);
+		//context.getCounter(AST_COUNTER.GETS_FAILED).increment(1);
 		return emptyAst;
 	}
 
@@ -166,37 +163,6 @@ public class BoaAstIntrinsics {
 		return emptyComments;
 	}
 
-	/**
-	 * Given an IssueRepository, return the issues.
-	 * 
-	 * @param f the IssueRepository to get issues for
-	 * @return the issues list, or an empty list on any sort of error
-	 */
-	@FunctionSpec(name = "getissues", returnType = "IssuesRoot", formalParameters = { "IssueRepository" })
-	public static IssuesRoot getissues(final IssueRepository f) {
-		if (issuesMap == null)
-			openIssuesMap();
-
-		try {
-			final BytesWritable value = new BytesWritable();
-			if (issuesMap.get(new Text(f.getKey()), value) != null) {
-				final CodedInputStream _stream = CodedInputStream.newInstance(value.getBytes(), 0, value.getLength());
-				final IssuesRoot root = IssuesRoot.parseFrom(_stream);
-				return root;
-			}
-		} catch (final InvalidProtocolBufferException e) {
-			e.printStackTrace();
-		} catch (final IOException e) {
-			e.printStackTrace();
-		} catch (final RuntimeException e) {
-			e.printStackTrace();
-		} catch (final Error e) {
-			e.printStackTrace();
-		}
-
-		System.err.println("error with issues: " + f.getKey());
-		return emptyIssues;
-	}
 
 	@SuppressWarnings("rawtypes")
 	public static void setup(final Context context) {
@@ -207,9 +173,9 @@ public class BoaAstIntrinsics {
 		final Configuration conf = new Configuration();
 		try {
 			final FileSystem fs = FileSystem.get(conf);
-			final Path p = new Path("hdfs://boa-njt/",
-								new Path(context.getConfiguration().get("boa.ast.dir", context.getConfiguration().get("boa.input.dir", "repcache/live")),
-								new Path("ast")));
+			//final Path p = new Path("/home/ram/Desktop/work-alias/tmprepcache/sorted/ast");
+			//final Path p = new Path("/home/ram/work-6000/tmprepcache/sorted/ast");
+			final Path p = new Path("/home/ram/sflarge/ast");
 			map = new MapFile.Reader(fs, p.toString(), conf);
 		} catch (final Exception e) {
 			e.printStackTrace();
@@ -229,24 +195,11 @@ public class BoaAstIntrinsics {
 		}
 	}
 
-	private static void openIssuesMap() {
-		final Configuration conf = new Configuration();
-		try {
-			final FileSystem fs = FileSystem.get(conf);
-			final Path p = new Path("hdfs://boa-njt/",
-								new Path(context.getConfiguration().get("boa.issues.dir", context.getConfiguration().get("boa.input.dir", "repcache/live")),
-								new Path("issues")));
-			issuesMap = new MapFile.Reader(fs, p.toString(), conf);
-		} catch (final Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	@SuppressWarnings("rawtypes")
 	public static void cleanup(final Context context) {
 		closeMap();
 		closeCommentMap();
-		closeIssuesMap();
 	}
 
 	private static void closeMap() {
@@ -269,15 +222,6 @@ public class BoaAstIntrinsics {
 		commentsMap = null;
 	}
 
-	private static void closeIssuesMap() {
-		if (issuesMap != null)
-			try {
-				issuesMap.close();
-			} catch (final IOException e) {
-				e.printStackTrace();
-			}
-		issuesMap = null;
-	}
 
 	@FunctionSpec(name = "type_name", returnType = "string", formalParameters = { "string" })
 	public static String type_name(final String s) {
@@ -454,11 +398,14 @@ public class BoaAstIntrinsics {
 	private static class GenericsCollectingVisitor extends BoaCollectingVisitor<String,Long> {
 		@Override
 		protected boolean preVisit(Type node) {
+			// FIXME
+			/*
 			try {
 				parseGenericType(BoaAstIntrinsics.type_name(node.getName()).trim(), map);
 			} catch (final StackOverflowError e) {
 				System.err.println("STACK ERR: " + node.getName() + " -> " + BoaAstIntrinsics.type_name(node.getName()).trim());
 			}
+			*/ 
 			return true;
 		}
 	}

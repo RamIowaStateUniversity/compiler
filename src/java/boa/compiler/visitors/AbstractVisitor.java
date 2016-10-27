@@ -273,6 +273,47 @@ public abstract class AbstractVisitor<ReturnType, ArgType> {
 		return null;
 	}
 
+	public ReturnType visit(final TraverseStatement n, final ArgType arg) {
+		if (n.hasComponent())
+			n.getComponent().accept(this, arg);
+		for (final Identifier id : n.getIdList())
+			id.accept(this, arg);
+		if (n.hasCondition())
+			n.getCondition().accept(this, arg);
+		for (final IfStatement ifStatement : n.getIfStatements())
+			ifStatement.accept(this, arg);
+		if(n.getReturnType()!=null) {
+			n.getReturnType().accept(this, arg);
+		}
+		if(n.hasBody())
+		n.getBody().accept(this, arg);
+		return null;
+	}
+
+	public ReturnType visit(final FixPStatement n, final ArgType arg) {
+		n.getParam1().accept(this, arg);
+		n.getParam2().accept(this, arg);
+		for (final Identifier id : n.getIdList())
+			id.accept(this, arg);
+		if (n.hasCondition())
+			n.getCondition().accept(this, arg);
+		if(n.getReturnType()!=null) {
+			n.getReturnType().accept(this, arg);
+		}
+		if(n.hasBody())
+		n.getBody().accept(this, arg);
+		return null;
+	}
+	/*public ReturnType visit(final WhenStatement n, final ArgType arg) {
+		if (n.hasComponent())
+			n.getComponent().accept(this, arg);
+		for (final Identifier id : n.getIdList())
+			id.accept(this, arg);
+		n.getCondition().accept(this,arg);
+		n.getBody().accept(this, arg);
+		return null;
+	}*/
+
 	public ReturnType visit(final WhileStatement n, final ArgType arg) {
 		n.getCondition().accept(this, arg);
 		n.getBody().accept(this, arg);
@@ -312,6 +353,24 @@ public abstract class AbstractVisitor<ReturnType, ArgType> {
 		n.getBody().accept(this, arg);
 		return null;
 	}
+
+	public ReturnType visit(final TraversalExpression n, final ArgType arg) {
+		n.getType().accept(this, arg);
+		n.getBody().accept(this, arg);
+		return null;
+	}
+
+	public ReturnType visit(final FixPExpression n, final ArgType arg) {
+		n.getType().accept(this, arg);
+		n.getBody().accept(this, arg);
+		return null;
+	}
+
+	/*public ReturnType visit(final WhenExpression n, final ArgType arg) {
+		n.getType().accept(this, arg);
+		n.getBody().accept(this, arg);
+		return null;
+	}*/
 
 	//
 	// literals
@@ -395,4 +454,17 @@ public abstract class AbstractVisitor<ReturnType, ArgType> {
 	public ReturnType visit(final VisitorType n, final ArgType arg) {
 		return null;
 	}
+
+	public ReturnType visit(final TraversalType n, final ArgType arg) {
+		if(n.getIndex()!=null)
+			n.getIndex().accept(this, arg);
+		return null;
+	}
+	
+	public ReturnType visit(final FixPType n, final ArgType arg) {
+		return null;
+	}
+	/*public ReturnType visit(final WhenType n, final ArgType arg) {
+		return null;
+	}*/
 }

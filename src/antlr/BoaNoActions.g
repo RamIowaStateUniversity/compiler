@@ -39,7 +39,7 @@ staticVariableDeclaration
 	;
 
 variableDeclaration
-	: identifier COLON (type)? (EQUALS ({ notifyErrorListeners("error: output variable declarations should not include '='"); } outputType | expression))? { isSemiColon(); }
+	: forVariableDeclaration { isSemiColon(); }
 	;
 
 type 
@@ -156,12 +156,11 @@ forExpression
 	;
 
 forVariableDeclaration
-	: identifier COLON (type)? (EQUALS expression)?
+	: identifier COLON (type)? (EQUALS ({ notifyErrorListeners("error: output variable declarations should not include '='"); } outputType | expression))?
 	;
 
 forExpressionStatement
 	: expression (INCR | DECR) # postfixStatement
-	| factor EQUALS expression # variableDeclaration
 	| expression               # exprStatement
 	;
 
