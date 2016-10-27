@@ -88,48 +88,6 @@ public final class Diff {
      * <code>optional .boa.types.CommentsRoot comments = 6;</code>
      */
     boa.types.Ast.CommentsRootOrBuilder getCommentsOrBuilder();
-
-    // repeated .boa.types.ChangeKind changes = 7;
-    /**
-     * <code>repeated .boa.types.ChangeKind changes = 7;</code>
-     */
-    java.util.List<boa.types.Shared.ChangeKind> getChangesList();
-    /**
-     * <code>repeated .boa.types.ChangeKind changes = 7;</code>
-     */
-    int getChangesCount();
-    /**
-     * <code>repeated .boa.types.ChangeKind changes = 7;</code>
-     */
-    boa.types.Shared.ChangeKind getChanges(int index);
-
-    // repeated int32 previous_versions = 8;
-    /**
-     * <code>repeated int32 previous_versions = 8;</code>
-     */
-    java.util.List<java.lang.Integer> getPreviousVersionsList();
-    /**
-     * <code>repeated int32 previous_versions = 8;</code>
-     */
-    int getPreviousVersionsCount();
-    /**
-     * <code>repeated int32 previous_versions = 8;</code>
-     */
-    int getPreviousVersions(int index);
-
-    // repeated int32 previous_index = 9;
-    /**
-     * <code>repeated int32 previous_index = 9;</code>
-     */
-    java.util.List<java.lang.Integer> getPreviousIndexList();
-    /**
-     * <code>repeated int32 previous_index = 9;</code>
-     */
-    int getPreviousIndexCount();
-    /**
-     * <code>repeated int32 previous_index = 9;</code>
-     */
-    int getPreviousIndex(int index);
   }
   /**
    * Protobuf type {@code boa.types.ChangedFile}
@@ -240,81 +198,6 @@ public final class Diff {
               bitField0_ |= 0x00000020;
               break;
             }
-            case 56: {
-              int rawValue = input.readEnum();
-              boa.types.Shared.ChangeKind value = boa.types.Shared.ChangeKind.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(7, rawValue);
-              } else {
-                if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
-                  changes_ = new java.util.ArrayList<boa.types.Shared.ChangeKind>();
-                  mutable_bitField0_ |= 0x00000040;
-                }
-                changes_.add(value);
-              }
-              break;
-            }
-            case 58: {
-              int length = input.readRawVarint32();
-              int oldLimit = input.pushLimit(length);
-              while(input.getBytesUntilLimit() > 0) {
-                int rawValue = input.readEnum();
-                boa.types.Shared.ChangeKind value = boa.types.Shared.ChangeKind.valueOf(rawValue);
-                if (value == null) {
-                  unknownFields.mergeVarintField(7, rawValue);
-                } else {
-                  if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
-                    changes_ = new java.util.ArrayList<boa.types.Shared.ChangeKind>();
-                    mutable_bitField0_ |= 0x00000040;
-                  }
-                  changes_.add(value);
-                }
-              }
-              input.popLimit(oldLimit);
-              break;
-            }
-            case 64: {
-              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
-                previousVersions_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000080;
-              }
-              previousVersions_.add(input.readInt32());
-              break;
-            }
-            case 66: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080) && input.getBytesUntilLimit() > 0) {
-                previousVersions_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000080;
-              }
-              while (input.getBytesUntilLimit() > 0) {
-                previousVersions_.add(input.readInt32());
-              }
-              input.popLimit(limit);
-              break;
-            }
-            case 72: {
-              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
-                previousIndex_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000100;
-              }
-              previousIndex_.add(input.readInt32());
-              break;
-            }
-            case 74: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100) && input.getBytesUntilLimit() > 0) {
-                previousIndex_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000100;
-              }
-              while (input.getBytesUntilLimit() > 0) {
-                previousIndex_.add(input.readInt32());
-              }
-              input.popLimit(limit);
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -323,15 +206,6 @@ public final class Diff {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
-          changes_ = java.util.Collections.unmodifiableList(changes_);
-        }
-        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
-          previousVersions_ = java.util.Collections.unmodifiableList(previousVersions_);
-        }
-        if (((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
-          previousIndex_ = java.util.Collections.unmodifiableList(previousIndex_);
-        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -369,236 +243,85 @@ public final class Diff {
     public enum FileKind
         implements com.google.protobuf.ProtocolMessageEnum {
       /**
-       * <code>OTHER = 0;</code>
+       * <code>UNKNOWN = 1;</code>
        */
-      OTHER(0, 0),
+      UNKNOWN(0, 1),
       /**
-       * <code>BINARY = 1;</code>
+       * <code>BINARY = 2;</code>
        */
-      BINARY(1, 1),
+      BINARY(1, 2),
       /**
-       * <code>TEXT = 2;</code>
+       * <code>TEXT = 3;</code>
        */
-      TEXT(2, 2),
+      TEXT(2, 3),
       /**
-       * <code>XML = 3;</code>
+       * <code>XML = 4;</code>
        */
-      XML(3, 3),
+      XML(3, 4),
       /**
-       * <code>SOURCE_JAVA_ERROR = 100;</code>
+       * <code>SOURCE_JAVA_ERROR = 5;</code>
        */
-      SOURCE_JAVA_ERROR(4, 100),
+      SOURCE_JAVA_ERROR(4, 5),
       /**
-       * <code>SOURCE_JAVA_JLS2 = 101;</code>
+       * <code>SOURCE_JAVA_JLS2 = 6;</code>
        */
-      SOURCE_JAVA_JLS2(5, 101),
+      SOURCE_JAVA_JLS2(5, 6),
       /**
-       * <code>SOURCE_JAVA_JLS3 = 102;</code>
+       * <code>SOURCE_JAVA_JLS3 = 7;</code>
        */
-      SOURCE_JAVA_JLS3(6, 102),
+      SOURCE_JAVA_JLS3(6, 7),
       /**
-       * <code>SOURCE_JAVA_JLS4 = 103;</code>
+       * <code>SOURCE_JAVA_JLS4 = 8;</code>
        */
-      SOURCE_JAVA_JLS4(7, 103),
-      /**
-       * <code>SOURCE_JAVA_JLS5 = 104;</code>
-       */
-      SOURCE_JAVA_JLS5(8, 104),
-      /**
-       * <code>SOURCE_CS_ERROR = 200;</code>
-       */
-      SOURCE_CS_ERROR(14, 200),
-      /**
-       * <code>SOURCE_CS_CS1 = 201;</code>
-       */
-      SOURCE_CS_CS1(15, 201),
-      /**
-       * <code>SOURCE_CS_CS2 = 202;</code>
-       */
-      SOURCE_CS_CS2(16, 202),
-      /**
-       * <code>SOURCE_CS_CS3 = 203;</code>
-       */
-      SOURCE_CS_CS3(17, 203),
-      /**
-       * <code>SOURCE_CS_CS4 = 204;</code>
-       */
-      SOURCE_CS_CS4(18, 204),
-      /**
-       * <code>SOURCE_CS_CS5 = 205;</code>
-       */
-      SOURCE_CS_CS5(19, 205),
+      SOURCE_JAVA_JLS4(7, 8),
       ;
 
       /**
-       * <code>JAVA_ERROR = 100;</code>
+       * <code>UNKNOWN = 1;</code>
        */
-      public static final FileKind JAVA_ERROR = SOURCE_JAVA_ERROR;
+      public static final int UNKNOWN_VALUE = 1;
       /**
-       * <code>JLS2 = 101;</code>
+       * <code>BINARY = 2;</code>
        */
-      public static final FileKind JLS2 = SOURCE_JAVA_JLS2;
+      public static final int BINARY_VALUE = 2;
       /**
-       * <code>JLS3 = 102;</code>
+       * <code>TEXT = 3;</code>
        */
-      public static final FileKind JLS3 = SOURCE_JAVA_JLS3;
+      public static final int TEXT_VALUE = 3;
       /**
-       * <code>JLS4 = 103;</code>
+       * <code>XML = 4;</code>
        */
-      public static final FileKind JLS4 = SOURCE_JAVA_JLS4;
+      public static final int XML_VALUE = 4;
       /**
-       * <code>JLS5 = 104;</code>
+       * <code>SOURCE_JAVA_ERROR = 5;</code>
        */
-      public static final FileKind JLS5 = SOURCE_JAVA_JLS5;
+      public static final int SOURCE_JAVA_ERROR_VALUE = 5;
       /**
-       * <code>CS_ERROR = 200;</code>
+       * <code>SOURCE_JAVA_JLS2 = 6;</code>
        */
-      public static final FileKind CS_ERROR = SOURCE_CS_ERROR;
+      public static final int SOURCE_JAVA_JLS2_VALUE = 6;
       /**
-       * <code>CS1 = 201;</code>
+       * <code>SOURCE_JAVA_JLS3 = 7;</code>
        */
-      public static final FileKind CS1 = SOURCE_CS_CS1;
+      public static final int SOURCE_JAVA_JLS3_VALUE = 7;
       /**
-       * <code>CS2 = 202;</code>
+       * <code>SOURCE_JAVA_JLS4 = 8;</code>
        */
-      public static final FileKind CS2 = SOURCE_CS_CS2;
-      /**
-       * <code>CS3 = 203;</code>
-       */
-      public static final FileKind CS3 = SOURCE_CS_CS3;
-      /**
-       * <code>CS4 = 204;</code>
-       */
-      public static final FileKind CS4 = SOURCE_CS_CS4;
-      /**
-       * <code>CS5 = 205;</code>
-       */
-      public static final FileKind CS5 = SOURCE_CS_CS5;
-      /**
-       * <code>OTHER = 0;</code>
-       */
-      public static final int OTHER_VALUE = 0;
-      /**
-       * <code>BINARY = 1;</code>
-       */
-      public static final int BINARY_VALUE = 1;
-      /**
-       * <code>TEXT = 2;</code>
-       */
-      public static final int TEXT_VALUE = 2;
-      /**
-       * <code>XML = 3;</code>
-       */
-      public static final int XML_VALUE = 3;
-      /**
-       * <code>SOURCE_JAVA_ERROR = 100;</code>
-       */
-      public static final int SOURCE_JAVA_ERROR_VALUE = 100;
-      /**
-       * <code>SOURCE_JAVA_JLS2 = 101;</code>
-       */
-      public static final int SOURCE_JAVA_JLS2_VALUE = 101;
-      /**
-       * <code>SOURCE_JAVA_JLS3 = 102;</code>
-       */
-      public static final int SOURCE_JAVA_JLS3_VALUE = 102;
-      /**
-       * <code>SOURCE_JAVA_JLS4 = 103;</code>
-       */
-      public static final int SOURCE_JAVA_JLS4_VALUE = 103;
-      /**
-       * <code>SOURCE_JAVA_JLS5 = 104;</code>
-       */
-      public static final int SOURCE_JAVA_JLS5_VALUE = 104;
-      /**
-       * <code>JAVA_ERROR = 100;</code>
-       */
-      public static final int JAVA_ERROR_VALUE = 100;
-      /**
-       * <code>JLS2 = 101;</code>
-       */
-      public static final int JLS2_VALUE = 101;
-      /**
-       * <code>JLS3 = 102;</code>
-       */
-      public static final int JLS3_VALUE = 102;
-      /**
-       * <code>JLS4 = 103;</code>
-       */
-      public static final int JLS4_VALUE = 103;
-      /**
-       * <code>JLS5 = 104;</code>
-       */
-      public static final int JLS5_VALUE = 104;
-      /**
-       * <code>SOURCE_CS_ERROR = 200;</code>
-       */
-      public static final int SOURCE_CS_ERROR_VALUE = 200;
-      /**
-       * <code>SOURCE_CS_CS1 = 201;</code>
-       */
-      public static final int SOURCE_CS_CS1_VALUE = 201;
-      /**
-       * <code>SOURCE_CS_CS2 = 202;</code>
-       */
-      public static final int SOURCE_CS_CS2_VALUE = 202;
-      /**
-       * <code>SOURCE_CS_CS3 = 203;</code>
-       */
-      public static final int SOURCE_CS_CS3_VALUE = 203;
-      /**
-       * <code>SOURCE_CS_CS4 = 204;</code>
-       */
-      public static final int SOURCE_CS_CS4_VALUE = 204;
-      /**
-       * <code>SOURCE_CS_CS5 = 205;</code>
-       */
-      public static final int SOURCE_CS_CS5_VALUE = 205;
-      /**
-       * <code>CS_ERROR = 200;</code>
-       */
-      public static final int CS_ERROR_VALUE = 200;
-      /**
-       * <code>CS1 = 201;</code>
-       */
-      public static final int CS1_VALUE = 201;
-      /**
-       * <code>CS2 = 202;</code>
-       */
-      public static final int CS2_VALUE = 202;
-      /**
-       * <code>CS3 = 203;</code>
-       */
-      public static final int CS3_VALUE = 203;
-      /**
-       * <code>CS4 = 204;</code>
-       */
-      public static final int CS4_VALUE = 204;
-      /**
-       * <code>CS5 = 205;</code>
-       */
-      public static final int CS5_VALUE = 205;
+      public static final int SOURCE_JAVA_JLS4_VALUE = 8;
 
 
       public final int getNumber() { return value; }
 
       public static FileKind valueOf(int value) {
         switch (value) {
-          case 0: return OTHER;
-          case 1: return BINARY;
-          case 2: return TEXT;
-          case 3: return XML;
-          case 100: return SOURCE_JAVA_ERROR;
-          case 101: return SOURCE_JAVA_JLS2;
-          case 102: return SOURCE_JAVA_JLS3;
-          case 103: return SOURCE_JAVA_JLS4;
-          case 104: return SOURCE_JAVA_JLS5;
-          case 200: return SOURCE_CS_ERROR;
-          case 201: return SOURCE_CS_CS1;
-          case 202: return SOURCE_CS_CS2;
-          case 203: return SOURCE_CS_CS3;
-          case 204: return SOURCE_CS_CS4;
-          case 205: return SOURCE_CS_CS5;
+          case 1: return UNKNOWN;
+          case 2: return BINARY;
+          case 3: return TEXT;
+          case 4: return XML;
+          case 5: return SOURCE_JAVA_ERROR;
+          case 6: return SOURCE_JAVA_JLS2;
+          case 7: return SOURCE_JAVA_JLS3;
+          case 8: return SOURCE_JAVA_JLS4;
           default: return null;
         }
       }
@@ -628,9 +351,7 @@ public final class Diff {
         return boa.types.Diff.ChangedFile.getDescriptor().getEnumTypes().get(0);
       }
 
-      private static final FileKind[] VALUES = {
-        OTHER, BINARY, TEXT, XML, SOURCE_JAVA_ERROR, SOURCE_JAVA_JLS2, SOURCE_JAVA_JLS3, SOURCE_JAVA_JLS4, SOURCE_JAVA_JLS5, JAVA_ERROR, JLS2, JLS3, JLS4, JLS5, SOURCE_CS_ERROR, SOURCE_CS_CS1, SOURCE_CS_CS2, SOURCE_CS_CS3, SOURCE_CS_CS4, SOURCE_CS_CS5, CS_ERROR, CS1, CS2, CS3, CS4, CS5, 
-      };
+      private static final FileKind[] VALUES = values();
 
       public static FileKind valueOf(
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
@@ -815,84 +536,13 @@ public final class Diff {
       return comments_;
     }
 
-    // repeated .boa.types.ChangeKind changes = 7;
-    public static final int CHANGES_FIELD_NUMBER = 7;
-    private java.util.List<boa.types.Shared.ChangeKind> changes_;
-    /**
-     * <code>repeated .boa.types.ChangeKind changes = 7;</code>
-     */
-    public java.util.List<boa.types.Shared.ChangeKind> getChangesList() {
-      return changes_;
-    }
-    /**
-     * <code>repeated .boa.types.ChangeKind changes = 7;</code>
-     */
-    public int getChangesCount() {
-      return changes_.size();
-    }
-    /**
-     * <code>repeated .boa.types.ChangeKind changes = 7;</code>
-     */
-    public boa.types.Shared.ChangeKind getChanges(int index) {
-      return changes_.get(index);
-    }
-
-    // repeated int32 previous_versions = 8;
-    public static final int PREVIOUS_VERSIONS_FIELD_NUMBER = 8;
-    private java.util.List<java.lang.Integer> previousVersions_;
-    /**
-     * <code>repeated int32 previous_versions = 8;</code>
-     */
-    public java.util.List<java.lang.Integer>
-        getPreviousVersionsList() {
-      return previousVersions_;
-    }
-    /**
-     * <code>repeated int32 previous_versions = 8;</code>
-     */
-    public int getPreviousVersionsCount() {
-      return previousVersions_.size();
-    }
-    /**
-     * <code>repeated int32 previous_versions = 8;</code>
-     */
-    public int getPreviousVersions(int index) {
-      return previousVersions_.get(index);
-    }
-
-    // repeated int32 previous_index = 9;
-    public static final int PREVIOUS_INDEX_FIELD_NUMBER = 9;
-    private java.util.List<java.lang.Integer> previousIndex_;
-    /**
-     * <code>repeated int32 previous_index = 9;</code>
-     */
-    public java.util.List<java.lang.Integer>
-        getPreviousIndexList() {
-      return previousIndex_;
-    }
-    /**
-     * <code>repeated int32 previous_index = 9;</code>
-     */
-    public int getPreviousIndexCount() {
-      return previousIndex_.size();
-    }
-    /**
-     * <code>repeated int32 previous_index = 9;</code>
-     */
-    public int getPreviousIndex(int index) {
-      return previousIndex_.get(index);
-    }
-
     private void initFields() {
       change_ = boa.types.Shared.ChangeKind.ADDED;
-      kind_ = boa.types.Diff.ChangedFile.FileKind.OTHER;
+      kind_ = boa.types.Diff.ChangedFile.FileKind.UNKNOWN;
       name_ = "";
       key_ = "";
       ast_ = boa.types.Ast.ASTRoot.getDefaultInstance();
       comments_ = boa.types.Ast.CommentsRoot.getDefaultInstance();
-      changes_ = java.util.Collections.emptyList();
-      previousVersions_ = java.util.Collections.emptyList();
-      previousIndex_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -952,15 +602,6 @@ public final class Diff {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeMessage(6, comments_);
       }
-      for (int i = 0; i < changes_.size(); i++) {
-        output.writeEnum(7, changes_.get(i).getNumber());
-      }
-      for (int i = 0; i < previousVersions_.size(); i++) {
-        output.writeInt32(8, previousVersions_.get(i));
-      }
-      for (int i = 0; i < previousIndex_.size(); i++) {
-        output.writeInt32(9, previousIndex_.get(i));
-      }
       getUnknownFields().writeTo(output);
     }
 
@@ -993,33 +634,6 @@ public final class Diff {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, comments_);
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < changes_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeEnumSizeNoTag(changes_.get(i).getNumber());
-        }
-        size += dataSize;
-        size += 1 * changes_.size();
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < previousVersions_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(previousVersions_.get(i));
-        }
-        size += dataSize;
-        size += 1 * getPreviousVersionsList().size();
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < previousIndex_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(previousIndex_.get(i));
-        }
-        size += dataSize;
-        size += 1 * getPreviousIndexList().size();
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1141,7 +755,7 @@ public final class Diff {
         super.clear();
         change_ = boa.types.Shared.ChangeKind.ADDED;
         bitField0_ = (bitField0_ & ~0x00000001);
-        kind_ = boa.types.Diff.ChangedFile.FileKind.OTHER;
+        kind_ = boa.types.Diff.ChangedFile.FileKind.UNKNOWN;
         bitField0_ = (bitField0_ & ~0x00000002);
         name_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -1159,12 +773,6 @@ public final class Diff {
           commentsBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000020);
-        changes_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000040);
-        previousVersions_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000080);
-        previousIndex_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
 
@@ -1225,21 +833,6 @@ public final class Diff {
         } else {
           result.comments_ = commentsBuilder_.build();
         }
-        if (((bitField0_ & 0x00000040) == 0x00000040)) {
-          changes_ = java.util.Collections.unmodifiableList(changes_);
-          bitField0_ = (bitField0_ & ~0x00000040);
-        }
-        result.changes_ = changes_;
-        if (((bitField0_ & 0x00000080) == 0x00000080)) {
-          previousVersions_ = java.util.Collections.unmodifiableList(previousVersions_);
-          bitField0_ = (bitField0_ & ~0x00000080);
-        }
-        result.previousVersions_ = previousVersions_;
-        if (((bitField0_ & 0x00000100) == 0x00000100)) {
-          previousIndex_ = java.util.Collections.unmodifiableList(previousIndex_);
-          bitField0_ = (bitField0_ & ~0x00000100);
-        }
-        result.previousIndex_ = previousIndex_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1277,36 +870,6 @@ public final class Diff {
         }
         if (other.hasComments()) {
           mergeComments(other.getComments());
-        }
-        if (!other.changes_.isEmpty()) {
-          if (changes_.isEmpty()) {
-            changes_ = other.changes_;
-            bitField0_ = (bitField0_ & ~0x00000040);
-          } else {
-            ensureChangesIsMutable();
-            changes_.addAll(other.changes_);
-          }
-          onChanged();
-        }
-        if (!other.previousVersions_.isEmpty()) {
-          if (previousVersions_.isEmpty()) {
-            previousVersions_ = other.previousVersions_;
-            bitField0_ = (bitField0_ & ~0x00000080);
-          } else {
-            ensurePreviousVersionsIsMutable();
-            previousVersions_.addAll(other.previousVersions_);
-          }
-          onChanged();
-        }
-        if (!other.previousIndex_.isEmpty()) {
-          if (previousIndex_.isEmpty()) {
-            previousIndex_ = other.previousIndex_;
-            bitField0_ = (bitField0_ & ~0x00000100);
-          } else {
-            ensurePreviousIndexIsMutable();
-            previousIndex_.addAll(other.previousIndex_);
-          }
-          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1400,7 +963,7 @@ public final class Diff {
       }
 
       // required .boa.types.ChangedFile.FileKind kind = 2;
-      private boa.types.Diff.ChangedFile.FileKind kind_ = boa.types.Diff.ChangedFile.FileKind.OTHER;
+      private boa.types.Diff.ChangedFile.FileKind kind_ = boa.types.Diff.ChangedFile.FileKind.UNKNOWN;
       /**
        * <code>required .boa.types.ChangedFile.FileKind kind = 2;</code>
        */
@@ -1430,7 +993,7 @@ public final class Diff {
        */
       public Builder clearKind() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        kind_ = boa.types.Diff.ChangedFile.FileKind.OTHER;
+        kind_ = boa.types.Diff.ChangedFile.FileKind.UNKNOWN;
         onChanged();
         return this;
       }
@@ -1817,210 +1380,6 @@ public final class Diff {
         return commentsBuilder_;
       }
 
-      // repeated .boa.types.ChangeKind changes = 7;
-      private java.util.List<boa.types.Shared.ChangeKind> changes_ =
-        java.util.Collections.emptyList();
-      private void ensureChangesIsMutable() {
-        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
-          changes_ = new java.util.ArrayList<boa.types.Shared.ChangeKind>(changes_);
-          bitField0_ |= 0x00000040;
-        }
-      }
-      /**
-       * <code>repeated .boa.types.ChangeKind changes = 7;</code>
-       */
-      public java.util.List<boa.types.Shared.ChangeKind> getChangesList() {
-        return java.util.Collections.unmodifiableList(changes_);
-      }
-      /**
-       * <code>repeated .boa.types.ChangeKind changes = 7;</code>
-       */
-      public int getChangesCount() {
-        return changes_.size();
-      }
-      /**
-       * <code>repeated .boa.types.ChangeKind changes = 7;</code>
-       */
-      public boa.types.Shared.ChangeKind getChanges(int index) {
-        return changes_.get(index);
-      }
-      /**
-       * <code>repeated .boa.types.ChangeKind changes = 7;</code>
-       */
-      public Builder setChanges(
-          int index, boa.types.Shared.ChangeKind value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureChangesIsMutable();
-        changes_.set(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated .boa.types.ChangeKind changes = 7;</code>
-       */
-      public Builder addChanges(boa.types.Shared.ChangeKind value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureChangesIsMutable();
-        changes_.add(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated .boa.types.ChangeKind changes = 7;</code>
-       */
-      public Builder addAllChanges(
-          java.lang.Iterable<? extends boa.types.Shared.ChangeKind> values) {
-        ensureChangesIsMutable();
-        super.addAll(values, changes_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated .boa.types.ChangeKind changes = 7;</code>
-       */
-      public Builder clearChanges() {
-        changes_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000040);
-        onChanged();
-        return this;
-      }
-
-      // repeated int32 previous_versions = 8;
-      private java.util.List<java.lang.Integer> previousVersions_ = java.util.Collections.emptyList();
-      private void ensurePreviousVersionsIsMutable() {
-        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
-          previousVersions_ = new java.util.ArrayList<java.lang.Integer>(previousVersions_);
-          bitField0_ |= 0x00000080;
-         }
-      }
-      /**
-       * <code>repeated int32 previous_versions = 8;</code>
-       */
-      public java.util.List<java.lang.Integer>
-          getPreviousVersionsList() {
-        return java.util.Collections.unmodifiableList(previousVersions_);
-      }
-      /**
-       * <code>repeated int32 previous_versions = 8;</code>
-       */
-      public int getPreviousVersionsCount() {
-        return previousVersions_.size();
-      }
-      /**
-       * <code>repeated int32 previous_versions = 8;</code>
-       */
-      public int getPreviousVersions(int index) {
-        return previousVersions_.get(index);
-      }
-      /**
-       * <code>repeated int32 previous_versions = 8;</code>
-       */
-      public Builder setPreviousVersions(
-          int index, int value) {
-        ensurePreviousVersionsIsMutable();
-        previousVersions_.set(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 previous_versions = 8;</code>
-       */
-      public Builder addPreviousVersions(int value) {
-        ensurePreviousVersionsIsMutable();
-        previousVersions_.add(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 previous_versions = 8;</code>
-       */
-      public Builder addAllPreviousVersions(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
-        ensurePreviousVersionsIsMutable();
-        super.addAll(values, previousVersions_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 previous_versions = 8;</code>
-       */
-      public Builder clearPreviousVersions() {
-        previousVersions_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000080);
-        onChanged();
-        return this;
-      }
-
-      // repeated int32 previous_index = 9;
-      private java.util.List<java.lang.Integer> previousIndex_ = java.util.Collections.emptyList();
-      private void ensurePreviousIndexIsMutable() {
-        if (!((bitField0_ & 0x00000100) == 0x00000100)) {
-          previousIndex_ = new java.util.ArrayList<java.lang.Integer>(previousIndex_);
-          bitField0_ |= 0x00000100;
-         }
-      }
-      /**
-       * <code>repeated int32 previous_index = 9;</code>
-       */
-      public java.util.List<java.lang.Integer>
-          getPreviousIndexList() {
-        return java.util.Collections.unmodifiableList(previousIndex_);
-      }
-      /**
-       * <code>repeated int32 previous_index = 9;</code>
-       */
-      public int getPreviousIndexCount() {
-        return previousIndex_.size();
-      }
-      /**
-       * <code>repeated int32 previous_index = 9;</code>
-       */
-      public int getPreviousIndex(int index) {
-        return previousIndex_.get(index);
-      }
-      /**
-       * <code>repeated int32 previous_index = 9;</code>
-       */
-      public Builder setPreviousIndex(
-          int index, int value) {
-        ensurePreviousIndexIsMutable();
-        previousIndex_.set(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 previous_index = 9;</code>
-       */
-      public Builder addPreviousIndex(int value) {
-        ensurePreviousIndexIsMutable();
-        previousIndex_.add(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 previous_index = 9;</code>
-       */
-      public Builder addAllPreviousIndex(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
-        ensurePreviousIndexIsMutable();
-        super.addAll(values, previousIndex_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated int32 previous_index = 9;</code>
-       */
-      public Builder clearPreviousIndex() {
-        previousIndex_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000100);
-        onChanged();
-        return this;
-      }
-
       // @@protoc_insertion_point(builder_scope:boa.types.ChangedFile)
     }
 
@@ -2047,25 +1406,16 @@ public final class Diff {
   static {
     java.lang.String[] descriptorData = {
       "\n\ndiff.proto\022\tboa.types\032\014shared.proto\032\ta" +
-      "st.proto\"\302\005\n\013ChangedFile\022%\n\006change\030\001 \002(\016" +
+      "st.proto\"\334\002\n\013ChangedFile\022%\n\006change\030\001 \002(\016" +
       "2\025.boa.types.ChangeKind\022-\n\004kind\030\002 \002(\0162\037." +
       "boa.types.ChangedFile.FileKind\022\014\n\004name\030\003" +
       " \002(\t\022\013\n\003key\030\004 \002(\t\022\037\n\003ast\030\005 \001(\0132\022.boa.typ" +
       "es.ASTRoot\022)\n\010comments\030\006 \001(\0132\027.boa.types" +
-      ".CommentsRoot\022&\n\007changes\030\007 \003(\0162\025.boa.typ" +
-      "es.ChangeKind\022\031\n\021previous_versions\030\010 \003(\005" +
-      "\022\026\n\016previous_index\030\t \003(\005\"\232\003\n\010FileKind\022\t\n" +
-      "\005OTHER\020\000\022\n\n\006BINARY\020\001\022\010\n\004TEXT\020\002\022\007\n\003XML\020\003\022",
-      "\025\n\021SOURCE_JAVA_ERROR\020d\022\024\n\020SOURCE_JAVA_JL" +
-      "S2\020e\022\024\n\020SOURCE_JAVA_JLS3\020f\022\024\n\020SOURCE_JAV" +
-      "A_JLS4\020g\022\024\n\020SOURCE_JAVA_JLS5\020h\022\016\n\nJAVA_E" +
-      "RROR\020d\022\010\n\004JLS2\020e\022\010\n\004JLS3\020f\022\010\n\004JLS4\020g\022\010\n\004" +
-      "JLS5\020h\022\024\n\017SOURCE_CS_ERROR\020\310\001\022\022\n\rSOURCE_C" +
-      "S_CS1\020\311\001\022\022\n\rSOURCE_CS_CS2\020\312\001\022\022\n\rSOURCE_C" +
-      "S_CS3\020\313\001\022\022\n\rSOURCE_CS_CS4\020\314\001\022\022\n\rSOURCE_C" +
-      "S_CS5\020\315\001\022\r\n\010CS_ERROR\020\310\001\022\010\n\003CS1\020\311\001\022\010\n\003CS2" +
-      "\020\312\001\022\010\n\003CS3\020\313\001\022\010\n\003CS4\020\314\001\022\010\n\003CS5\020\315\001\032\002\020\001B\002H" +
-      "\001"
+      ".CommentsRoot\"\217\001\n\010FileKind\022\013\n\007UNKNOWN\020\001\022" +
+      "\n\n\006BINARY\020\002\022\010\n\004TEXT\020\003\022\007\n\003XML\020\004\022\025\n\021SOURCE" +
+      "_JAVA_ERROR\020\005\022\024\n\020SOURCE_JAVA_JLS2\020\006\022\024\n\020S" +
+      "OURCE_JAVA_JLS3\020\007\022\024\n\020SOURCE_JAVA_JLS4\020\010B",
+      "\002H\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2077,7 +1427,7 @@ public final class Diff {
           internal_static_boa_types_ChangedFile_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_boa_types_ChangedFile_descriptor,
-              new java.lang.String[] { "Change", "Kind", "Name", "Key", "Ast", "Comments", "Changes", "PreviousVersions", "PreviousIndex", });
+              new java.lang.String[] { "Change", "Kind", "Name", "Key", "Ast", "Comments", });
           return null;
         }
       };

@@ -14,21 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package boa.types.proto.enums;
+package boa.runtime;
 
-import com.google.protobuf.ProtocolMessageEnum;
-
-import boa.types.BoaProtoMap;
-
-/**
- * A {@link ForgeKindProtoMap}.
- * 
- * @author rdyer
- */
-public class ForgeKindProtoMap extends BoaProtoMap {
-	/** {@inheritDoc} */
-	@Override
-	protected Class<? extends ProtocolMessageEnum> getEnumClass() {
-		return boa.types.Toplevel.Project.ForgeKind.class;
-	}
+public interface DeepCloneable {
+    Object deepClone();
 }

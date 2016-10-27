@@ -24,6 +24,7 @@ import java.util.Map;
 import boa.types.BoaProtoTuple;
 import boa.types.BoaString;
 import boa.types.BoaType;
+import boa.types.BoaInt;
 import boa.types.proto.enums.CFGEdgeLabelProtoMap;
 import boa.types.proto.enums.FileKindProtoMap;
 
@@ -42,6 +43,14 @@ public class CFGEdgeProtoTuple extends BoaProtoTuple {
 		names.put("label", counter++);
 		members.add(new CFGEdgeLabelProtoMap());
 
+		names.put("src", counter++);
+		members.add(new CFGNodeProtoTuple());
+
+		names.put("dest", counter++);
+		members.add(new CFGNodeProtoTuple());
+
+		names.put("id", counter++);
+		members.add(new BoaInt());
 	}
 
 	/**
@@ -54,6 +63,6 @@ public class CFGEdgeProtoTuple extends BoaProtoTuple {
 	/** @{inheritDoc} */
 	@Override
 	public String toJavaType() {
-		return "boa.types.Control.CFGEdge";
+		return "boa.graphs.cfg.CFGEdge";
 	}
 }
