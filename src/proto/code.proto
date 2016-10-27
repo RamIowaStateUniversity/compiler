@@ -21,19 +21,13 @@ message CodeRepository {
 	}
 	required RepositoryKind kind = 2;
 	repeated Revision revisions = 3;
-	repeated int32 branches = 4;
-	repeated string branch_names = 5;
-	repeated int32 tags = 6;
-	repeated string tag_names = 7;
 }
 
 message Revision {
-	required string id = 1;
+	required int32 id = 1;
 	required Person author = 2;
 	required Person committer = 3;
 	required uint64 commit_date = 4;
 	required string log = 5;
 	repeated ChangedFile files = 6;
-	repeated int32 parents = 7;
-	repeated int32 children = 8;
 }

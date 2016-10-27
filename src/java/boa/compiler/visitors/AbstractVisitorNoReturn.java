@@ -21,6 +21,7 @@ import boa.compiler.ast.expressions.*;
 import boa.compiler.ast.literals.*;
 import boa.compiler.ast.statements.*;
 import boa.compiler.ast.types.*;
+import boa.types.*;
 
 /**
  * A specialization of the Visitor that doesn't pass up a return value.
@@ -31,6 +32,7 @@ import boa.compiler.ast.types.*;
  * @param <ArgType> the type of the argument to pass down the tree while visiting
  */
 public abstract class AbstractVisitorNoReturn<ArgType> {
+	public static int ii=0;
 	protected void initialize(final ArgType arg) { }
 
 	public void start(final Node n, final ArgType arg) {
@@ -43,6 +45,19 @@ public abstract class AbstractVisitorNoReturn<ArgType> {
 	}
 
 	public void visit(final Program n, final ArgType arg) {
+		/*if(ii==0) {
+			Component com = new Component();
+			com.setType(new Identifier("int"));
+			com.getType().type=new BoaInt();
+			Component com1 = new Component();
+			com1.setType(new Identifier("T"));
+			com1.getType().type=new BoaScalar();
+			VarDeclStatement vd = new VarDeclStatement (new Identifier("node_output"), new MapType(com, com1));
+			vd.type=new BoaMap(new BoaScalar(),new BoaInt());
+			n.addStatement(vd);
+			System.out.println("id "+vd.getId().getToken());
+			ii++;
+		}*/
 		int len = n.getStatementsSize();
 		for (int i = 0; i < n.getStatementsSize(); i++) {
 			n.getStatement(i).accept(this, arg);
@@ -240,6 +255,44 @@ public abstract class AbstractVisitorNoReturn<ArgType> {
 		n.getBody().accept(this, arg);
 	}
 
+	public void visit(final TraverseStatement n, final ArgType arg) {
+		if (n.hasComponent())
+			n.getComponent().accept(this, arg);
+		for (final Identifier id : n.getIdList())
+			id.accept(this, arg);
+		if (n.hasCondition())
+			n.getCondition().accept(this,arg);
+		if(n.getReturnType()!=null) {
+			n.getReturnType().accept(this, arg);
+		}
+		for (final IfStatement ifStatement : n.getIfStatements())
+			ifStatement.accept(this, arg);
+		if(n.hasBody())
+		n.getBody().accept(this, arg);
+	}
+
+	public void visit(final FixPStatement n, final ArgType arg) {
+		n.getParam1().accept(this, arg);
+		n.getParam2().accept(this, arg);
+		for (final Identifier id : n.getIdList())
+			id.accept(this, arg);
+		if (n.hasCondition())
+			n.getCondition().accept(this,arg);
+		if(n.getReturnType()!=null) {
+			n.getReturnType().accept(this, arg);
+		}
+		if(n.hasBody())
+		n.getBody().accept(this, arg);
+	}
+	/*public void visit(final WhenStatement n, final ArgType arg) {
+		if (n.hasComponent())
+			n.getComponent().accept(this, arg);
+		for (final Identifier id : n.getIdList())
+			id.accept(this, arg);
+		n.getCondition().accept(this,arg);
+		n.getBody().accept(this, arg);
+	}*/
+
 	public void visit(final WhileStatement n, final ArgType arg) {
 		n.getCondition().accept(this, arg);
 		n.getBody().accept(this, arg);
@@ -273,6 +326,20 @@ public abstract class AbstractVisitorNoReturn<ArgType> {
 		n.getType().accept(this, arg);
 		n.getBody().accept(this, arg);
 	}
+
+	public void visit(final TraversalExpression n, final ArgType arg) {
+		n.getType().accept(this, arg);
+		n.getBody().accept(this, arg);
+	}
+
+	public void visit(final FixPExpression n, final ArgType arg) {
+		n.getType().accept(this, arg);
+		n.getBody().accept(this, arg);
+	}
+	/*public void visit(final WhenExpression n, final ArgType arg) {
+		n.getType().accept(this, arg);
+		n.getBody().accept(this, arg);
+	}*/
 
 	//
 	// literals
@@ -342,4 +409,14 @@ public abstract class AbstractVisitorNoReturn<ArgType> {
 
 	public void visit(final VisitorType n, final ArgType arg) {
 	}
+
+	public void visit(final TraversalType n, final ArgType arg) {
+		if(n.getIndex()!=null)
+			n.getIndex().accept(this, arg);
+	}
+
+	public void visit(final FixPType n, final ArgType arg) {
+	}
+	/*public void visit(final WhenType n, final ArgType arg) {
+	}*/
 }

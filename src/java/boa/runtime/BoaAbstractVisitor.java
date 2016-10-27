@@ -17,10 +17,14 @@
 package boa.runtime;
 
 import java.util.List;
+import java.util.Queue;
+import java.util.LinkedList;
 
 import boa.functions.BoaAstIntrinsics;
 
 import boa.types.Ast.*;
+import boa.types.Ast.Expression.*;
+import boa.types.Control.*;
 import boa.types.Code.CodeRepository;
 import boa.types.Code.Revision;
 import boa.types.Diff.ChangedFile;
@@ -85,6 +89,12 @@ public abstract class BoaAbstractVisitor {
 	protected boolean preVisit(final Method node) throws Exception {
 		return defaultPreVisit();
 	}
+	protected boolean preVisit(final CFG cfg) throws Exception {
+		return defaultPreVisit();
+	}
+	protected boolean preVisit(final CFGNode node) throws Exception {
+		return defaultPreVisit();
+	}
 	protected boolean preVisit(final Variable node) throws Exception {
 		return defaultPreVisit();
 	}
@@ -92,6 +102,12 @@ public abstract class BoaAbstractVisitor {
 		return defaultPreVisit();
 	}
 	protected boolean preVisit(final Expression node) throws Exception {
+		return defaultPreVisit();
+	}
+	protected boolean preVisit(final ExpressionKind node) throws Exception {
+		return defaultPreVisit();
+	}
+	protected boolean preVisit(final ExpressionKind node,final String str) throws Exception {
 		return defaultPreVisit();
 	}
 	protected boolean preVisit(final Modifier node) throws Exception {
@@ -137,6 +153,12 @@ public abstract class BoaAbstractVisitor {
 	protected void postVisit(final Method node) throws Exception {
 		defaultPostVisit();
 	}
+	protected void postVisit(final CFG cfg) throws Exception {
+		defaultPostVisit();
+	}
+	protected void postVisit(final CFGNode node) throws Exception {
+		defaultPostVisit();
+	}
 	protected void postVisit(final Variable node) throws Exception {
 		defaultPostVisit();
 	}
@@ -144,6 +166,9 @@ public abstract class BoaAbstractVisitor {
 		defaultPostVisit();
 	}
 	protected void postVisit(final Expression node) throws Exception {
+		defaultPostVisit();
+	}
+	protected void postVisit(final ExpressionKind node) throws Exception {
 		defaultPostVisit();
 	}
 	protected void postVisit(final Modifier node) throws Exception {
@@ -306,6 +331,126 @@ public abstract class BoaAbstractVisitor {
 			postVisit(node);
 		}
 	}
+
+	public final void visit(final CFG cfg,final boolean bool) throws Exception {
+		if (preVisit(cfg)) {
+			if(bool) {
+				java.util.List<boa.types.Control.CFGEdge> edges=cfg.getEdgesList();
+				java.util.HashMap<Integer,String> nodeVisitStatus=new java.util.HashMap<Integer,String>();
+				int edgeSize=(int)java.lang.Math.sqrt(edges.size());
+				for(int i=0;i<edgeSize;i++) {
+					nodeVisitStatus.put(i,"unvisited");
+				}
+				Queue<Integer> q=new LinkedList<Integer>();
+				nodeVisitStatus.put(edgeSize-1,"visited");
+				java.util.List<boa.types.Control.CFGNode> nl=sortNodes(cfg.getNodesList());
+				visit(nl.get(edgeSize-1));
+				q.add(edgeSize-1);
+				while(!q.isEmpty()) {
+					int index=q.peek();
+					for(int i=0;i<edges.size();i+=edgeSize) {
+						if(edges.get(i+index).getLabel().getNumber()!=1 && nodeVisitStatus.get(i/edgeSize).equals("unvisited")) {
+							System.out.println(i/edgeSize);
+							visit(nl.get(i/edgeSize));
+							nodeVisitStatus.put(i/edgeSize,"visited");
+							q.add(i/edgeSize);
+						}
+					}
+					q.remove();
+				}
+			}
+			else {
+				java.util.List<boa.types.Control.CFGEdge> edges=cfg.getEdgesList();
+				java.util.HashMap<Integer,String> nodeVisitStatus=new java.util.HashMap<Integer,String>();
+				int edgeSize=(int)java.lang.Math.sqrt(edges.size());
+				for(int i=0;i<edgeSize;i++) {
+					nodeVisitStatus.put(i,"unvisited");
+				}
+				Queue<Integer> q=new LinkedList<Integer>();
+				nodeVisitStatus.put(0,"visited");
+				java.util.List<boa.types.Control.CFGNode> nl=sortNodes(cfg.getNodesList());
+				visit(nl.get(0));
+				q.add(0);
+				while(!q.isEmpty()) {
+					int index=q.peek();
+					for(int i=index*edgeSize;i<(index*edgeSize)+edgeSize;i++) {
+						if(edges.get(i).getLabel().getNumber()!=1 && nodeVisitStatus.get(i%edgeSize).equals("unvisited")) {
+							System.out.println(i%edgeSize);
+							visit(nl.get(i%edgeSize));
+							nodeVisitStatus.put(i%edgeSize,"visited");
+							q.add(i%edgeSize);		
+						}
+					}
+					q.remove();
+				}
+			}
+			postVisit(cfg);		
+		}
+	}
+
+	public final java.util.List<boa.types.Control.CFGNode> sortNodes(final java.util.List<boa.types.Control.CFGNode> nodeList) {
+		java.util.List<boa.types.Control.CFGNode> nl=new java.util.ArrayList<boa.types.Control.CFGNode>();
+		for(boa.types.Control.CFGNode cn:nodeList) {
+			int flag=0;
+			if(nl.size()>0) {
+				for(int i=0;i<nl.size();i++) {
+					if(nl.get(i).getId()>cn.getId()) {
+						nl.add(i, cn);
+						flag=1;	
+						break;			
+					}
+				}
+				if(flag==0) {
+				nl.add(cn);
+				}
+				flag=0;
+			}
+			else {
+				nl.add(cn);			
+			}
+		}
+		return nl;
+	}
+/*	public final void visit(final CFG cfg) throws Exception {
+		if (preVisit(cfg)) {
+			java.util.List<boa.types.Control.CFGEdge> edges=cfg.getEdgesList();
+			java.util.HashMap<Integer,String> nodeVisitStatus=new java.util.HashMap<Integer,String>();
+			int edgeSize=(int)java.lang.Math.sqrt(edges.size());
+			for(int i=0;i<edgeSize;i++) {
+				nodeVisitStatus.put(i,"unvisited");
+			}
+			nodeVisitStatus.put(0,"visited");
+			visit(cfg.getNodes(0));			
+			traverse(cfg.getNodes(0),0,edges,edgeSize,nodeVisitStatus,cfg);
+		}
+	}
+
+	public final void traverse(CFGNode node,int index,java.util.List<boa.types.Control.CFGEdge> edges,int edgeSize,java.util.HashMap<Integer,String> nodeVisitStatus,CFG cfg) throws Exception {
+		for(int i=index*edgeSize;i<(index*edgeSize)+edgeSize;i++) {
+				if(edges.get(i).getLabel().getNumber()!=1 && nodeVisitStatus.get(i%edgeSize).equals("unvisited")) {
+//if(edges.get(i).getLabel().getNumber()!=1) {
+					System.out.println(i%edgeSize);
+					nodeVisitStatus.put(i%edgeSize,"visited");
+					visit(cfg.getNodes(i%edgeSize));
+					if(index<i%edgeSize) {
+						traverse(cfg.getNodes(i%edgeSize),i%edgeSize,edges,edgeSize,nodeVisitStatus,cfg);
+					}
+				}
+			}
+	}
+*/
+	public final void visit(final CFGNode node) throws Exception {
+		if (preVisit(node)) {
+			if(node.getStatement()!=null) {
+				visit(node.getStatement());
+			}
+			if(node.getExpression()!=null) {
+				visit(node.getExpression());
+			}
+			postVisit(node);
+		}
+	}
+
 	public final void visit(final Variable node) throws Exception {
 		if (preVisit(node)) {
 			visit(node.getVariableType());
@@ -381,6 +526,18 @@ public abstract class BoaAbstractVisitor {
 			if (node.hasAnonDeclaration())
 				visit(node.getAnonDeclaration());
 
+			postVisit(node);
+		}
+	}
+
+	public final void visit(final ExpressionKind node) throws Exception {
+		if (preVisit(node)) {
+			postVisit(node);
+		}
+	}
+
+	public final void visit(final ExpressionKind node,String type) throws Exception {
+		if (preVisit(node,type)) {
 			postVisit(node);
 		}
 	}

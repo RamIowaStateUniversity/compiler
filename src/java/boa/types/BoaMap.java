@@ -21,7 +21,7 @@ package boa.types;
  * 
  * @author anthonyu
  */
-public class BoaMap extends BoaType {
+public class BoaMap extends BoaScalar {
 	private final BoaType valueType;
 	private final BoaType indexType;
 

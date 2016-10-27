@@ -1,5 +1,28 @@
+/*
+ * Copyright 2014, Hridesh Rajan, Robert Dyer, 
+ *                 and Iowa State University of Science and Technology
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package boa.graphs.cfg;
 
+import boa.types.Control.CFGEdge.CFGEdgeLabel;
+
+/**
+ * Control flow graph builder edge
+ * @author ganeshau
+ *
+ */
 public class CFGEdge {
 	public static long numOfEdges = 0;
 
@@ -15,7 +38,7 @@ public class CFGEdge {
 		src.addOutEdge(this);
 		dest.addInEdge(this);
 
-		if (src.getType() == CFGNode.TYPE_CONTROL) {
+		if (src.getNodeKind() == CFGNode.TYPE_CONTROL) {
 			if (src.hasFalseBranch()) {
 				this.label = "T";
 			} else {
@@ -69,8 +92,24 @@ public class CFGEdge {
 		this.id = id;
 	}
 
-	public String getLabel() {
+	public String label() {
 		return label;
+	}
+
+	private final CFGEdgeLabel getLabel() {
+		if (label.equals(".")) {
+			return CFGEdgeLabel.DEFAULT;
+		} else if (label.equals("T")) {
+			return CFGEdgeLabel.TRUE;
+		} else if (label.equals("F")) {
+			return CFGEdgeLabel.FALSE;
+		} else if (label.equals("B")) {
+			return CFGEdgeLabel.BACKEDGE;
+		} else if (label.equals("E")) {
+			return CFGEdgeLabel.EXITEDGE;
+		} else {
+			return CFGEdgeLabel.NIL;
+		}
 	}
 
 	public void setLabel(String label) {
@@ -89,7 +128,7 @@ public class CFGEdge {
 		src.addOutEdge(this);
 		dest.addInEdge(this);
 
-		if (src.getType() == CFGNode.TYPE_CONTROL) {
+		if (src.getNodeKind() == CFGNode.TYPE_CONTROL) {
 			if (src.hasFalseBranch()) {
 				this.label = "T";
 			} else {

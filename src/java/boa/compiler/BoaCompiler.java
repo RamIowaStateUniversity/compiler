@@ -82,13 +82,12 @@ public class BoaCompiler {
 	private static Logger LOG = Logger.getLogger(BoaCompiler.class);
 	
 	public static void main(final String[] args) throws IOException {
+		
 		CommandLine cl = processCommandLineOptions(args);
 		if(cl==null) return;
 		final ArrayList<File> inputFiles = BoaCompiler.inputFiles;
-
 		// get the name of the generated class
-		final String className = getGeneratedClass(cl);
-
+		final String className = inputFiles.get(0).getName().replaceAll("-","").split(".boa")[0];//getGeneratedClass(cl);
 		// get the filename of the jar we will be writing
 		final String jarName;
 		if (cl.hasOption('o'))
@@ -98,7 +97,7 @@ public class BoaCompiler {
 
 		// make the output directory
 		final File outputRoot = new File(new File(System.getProperty("java.io.tmpdir")), UUID.randomUUID().toString());
-		final File outputSrcDir = new File(outputRoot, "boa");
+		final File outputSrcDir = new File(outputRoot, className+"/boa");
 		if (!outputSrcDir.mkdirs())
 			throw new IOException("unable to mkdir " + outputSrcDir);
 
@@ -158,10 +157,12 @@ public class BoaCompiler {
 							if (!simpleVisitor.isComplex() || cl.hasOption("nv") || inputFiles.size() == 1) {
 								new VisitorOptimizingTransformer().start(p);
 
-								final CodeGeneratingVisitor cg = new CodeGeneratingVisitor(jobName);
+								final CodeGeneratingVisitor cg = new CodeGeneratingVisitor(className);
 								cg.start(p);
 								jobs.add(cg.getCode());
-
+								//System.out.println(cg.getCode());
+								//DatasetVisitor dv = new DatasetVisitor();
+                                				//dv.start(p.getProgram());
 								jobnames.add(jobName);
 							}
 							// if a job has visitors, fuse them all together into a single program
@@ -190,7 +191,7 @@ public class BoaCompiler {
 					for (final Program p : new VisitorMergingTransformer().mergePrograms(visitorPrograms, maxVisitors)) {
 						new VisitorOptimizingTransformer().start(p);
 
-						final CodeGeneratingVisitor cg = new CodeGeneratingVisitor(p.jobName);
+						final CodeGeneratingVisitor cg = new CodeGeneratingVisitor(className);
 						cg.start(p);
 						jobs.add(cg.getCode());
 		
@@ -203,18 +204,17 @@ public class BoaCompiler {
 					for (final Program p : visitorPrograms) {
 						new VisitorOptimizingTransformer().start(p);
 
-						final CodeGeneratingVisitor cg = new CodeGeneratingVisitor(p.jobName);
+						final CodeGeneratingVisitor cg = new CodeGeneratingVisitor(className);
 						cg.start(p);
 						jobs.add(cg.getCode());
 
 						jobnames.add(p.jobName);
 					}
 				}
-
 			if (jobs.size() == 0)
 				throw new RuntimeException("no files compiled without error");
-
-			final ST st = AbstractCodeGeneratingVisitor.stg.getInstanceOf("Program");
+			//System.out.println(jobs);
+			/*final ST st = AbstractCodeGeneratingVisitor.stg.getInstanceOf("Program");
 
 			st.add("name", className);
 			st.add("numreducers", inputFiles.size());
@@ -223,15 +223,19 @@ public class BoaCompiler {
 			st.add("combineTables", CodeGeneratingVisitor.combineAggregatorStrings);
 			st.add("reduceTables", CodeGeneratingVisitor.reduceAggregatorStrings);
 			st.add("splitsize", isSimple ? 64 * 1024 * 1024 : 10 * 1024 * 1024);
-
-			o.write(st.render().getBytes());
+			*/
+			for(String jj :jobs)
+				o.write(jj.getBytes());
 		} finally {
 			o.close();
 		}
-
 		compileGeneratedSrc(cl, jarName, outputRoot, outputFile);
 	}
-
+	
+	public static void parseOnly(final String[] args) throws IOException {
+	    System.out.println("TODO: implement functionality to parse and check.");
+	}
+	
 	private static Start parse(final CommonTokenStream tokens,
 			final BoaParser parser,
 			final BoaErrorListener parserErrorListener) {
@@ -268,9 +272,21 @@ public class BoaCompiler {
 		final String path = ClasspathUrlFinder.findClassBase(BoaCompiler.class).getPath();
 		// find the location of the compiler distribution
 		final File root = new File(path.substring(path.indexOf(':') + 1, path.indexOf('!'))).getParentFile();
-
+		System.out.println(root.getParentFile());
 		final List<File> libJars = new ArrayList<File>();
 		libJars.add(new File(root, "boa-runtime.jar"));
+		libJars.add(new File(root.getParentFile(), "/lib/commons-configuration-1.7.jar"));
+		libJars.add(new File(root.getParentFile(), "/lib/commons-lang-2.4.jar"));
+		libJars.add(new File(root.getParentFile(), "/lib/commons-math-2.1.jar"));
+		libJars.add(new File(root.getParentFile(), "/lib/hadoop-core-1.0.4.jar"));
+		libJars.add(new File(root.getParentFile(), "/rtlib/antlr-runtime-4.5.jar"));
+		libJars.add(new File(root.getParentFile(), "/rtlib/commons-cli-1.2.jar"));
+		libJars.add(new File(root.getParentFile(), "/rtlib/log4j-1.2.15.jar"));
+		libJars.add(new File(root.getParentFile(), "/rtlib/protobuf-java-2.5.0.jar"));
+		libJars.add(new File(root.getParentFile(), "/rtlib/scannotation-1.0.3.jar"));
+		libJars.add(new File(root.getParentFile(), "/rtlib/ST-4.0.8.jar"));
+		libJars.add(new File(root.getParentFile(), "/lib/org-apache-commons-logging.jar"));
+		
 		if (cl.hasOption('l'))
 			for (final String s : Arrays.asList(cl.getOptionValues('l')))
 				libJars.add(new File(s));

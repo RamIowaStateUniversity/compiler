@@ -27,7 +27,6 @@ import boa.types.BoaProtoTuple;
 import boa.types.BoaString;
 import boa.types.BoaTime;
 import boa.types.BoaType;
-import boa.types.proto.enums.ForgeKindProtoMap;
 
 /**
  * A {@link BoaProtoTuple}.
@@ -100,9 +99,6 @@ public class ProjectProtoTuple extends BoaProtoTuple {
 
 		names.put("issue_repositories", counter++);
 		members.add(new BoaProtoList(new IssueRepositoryProtoTuple()));
-
-		names.put("kind", counter++);
-		members.add(new ForgeKindProtoMap());
 	}
 
 	/**

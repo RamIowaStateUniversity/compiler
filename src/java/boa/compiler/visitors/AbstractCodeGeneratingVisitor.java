@@ -67,7 +67,6 @@ public abstract class AbstractCodeGeneratingVisitor extends AbstractVisitorNoArg
 				s += ", ";
 			s += code.removeLast();
 		}
-
 		code.add(s);
 	}
 }
